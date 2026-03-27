@@ -1066,7 +1066,7 @@ const DEFAULT={
   },
   contact:{
     whatsapp:"50672967007",waDisplay:"7296-7007",
-    email:"",
+    email:"jeffadventurescr@gmail.com",
     location:"San José, Costa Rica",locationUrl:"",
     schedule:{
       mon:{open:true,from:"07:00",to:"18:00"},
@@ -1786,7 +1786,7 @@ function printProducts(){
   D.products.forEach(p=>{const cat=p.cat||"Otros";if(!groups[cat])groups[cat]=[];groups[cat].push(p);});
   const schedTxt=formatSchedule(c.schedule);
   let html=`<div class="print-title">${b.name}</div>
-    <div class="print-sub">${b.tagline} · ${c.waDisplay||c.whatsapp}${c.email?" · "+c.email:""}</div>`;
+    <div class="print-sub">${b.tagline} · ${c.waDisplay||c.whatsapp}${c.email?" · "+c.email:"jeffadventurescr@gmail.com"}</div>`;
   Object.entries(groups).forEach(([cat,prods])=>{
     html+=`<div class="print-cat-hd">${catEmoji(cat)} ${cat}</div>`;
     prods.forEach(p=>{
