@@ -1,0 +1,191 @@
+{
+  "business": {
+    "name": "Jeff Adventures CR",
+    "tagline": "Más que un tour, una experiencia",
+    "heroTitle": "Aventuras que transforman",
+    "heroSub": "Tours privados y grupales por la Costa Rica auténtica. Naturaleza, aventura y cultura con Jeff como guía.",
+    "heroImg": "",
+    "logoImg": "",
+    "showNavIcon": true,
+    "showProdEmoji": true,
+    "aboutTitle": "Jeff, tu guía de aventuras",
+    "aboutText": "Soy Jeff, guía turístico certificado por el ICT con más de 10 años explorando Costa Rica. Mi pasión es mostrarte los rincones más auténticos del país, desde volcanes y bosques nubosos hasta playas vírgenes y comunidades indígenas. Cada tour es personalizado según tus intereses y ritmo. ¡Pura Vida!",
+    "aboutImg": "",
+    "statsAuto": false,
+    "stats": [
+      { "num": "10+", "lbl": "Años de experiencia" },
+      { "num": "200+", "lbl": "Tours realizados" },
+      { "num": "⭐ 5", "lbl": "Calificación" }
+    ],
+    "values": [
+      {
+        "ico": "🏆",
+        "title": "Guía Certificado ICT",
+        "desc": "Licencia oficial del Instituto Costarricense de Turismo. Experiencia y profesionalismo garantizados en cada tour."
+      },
+      {
+        "ico": "🌿",
+        "title": "Turismo Sostenible",
+        "desc": "Tours diseñados para respetar y conservar la biodiversidad y las comunidades locales de Costa Rica."
+      },
+      {
+        "ico": "🚐",
+        "title": "Transporte Incluido",
+        "desc": "Recogida y regreso en vehículo cómodo con aire acondicionado desde tu hotel en San José."
+      }
+    ]
+  },
+  "contact": {
+    "whatsapp": "50600000000",
+    "waDisplay": "0000-0000",
+    "email": "jeff@jeffadventures.cr",
+    "location": "San José, Costa Rica",
+    "locationUrl": "",
+    "schedule": {
+      "mon": { "open": true, "from": "07:00", "to": "18:00" },
+      "tue": { "open": true, "from": "07:00", "to": "18:00" },
+      "wed": { "open": true, "from": "07:00", "to": "18:00" },
+      "thu": { "open": true, "from": "07:00", "to": "18:00" },
+      "fri": { "open": true, "from": "07:00", "to": "18:00" },
+      "sat": { "open": true, "from": "07:00", "to": "18:00" },
+      "sun": { "open": true, "from": "07:00", "to": "14:00" }
+    }
+  },
+  "products": [
+    {
+      "id": 1,
+      "name": "Tour Volcán Arenal",
+      "cat": "Aventura",
+      "desc": "Día completo en La Fortuna: visita al majestuoso Volcán Arenal, aguas termales naturales y la impresionante Cascada La Fortuna. Almuerzo típico incluido. Salida 6am desde San José.",
+      "price": "$85 por persona",
+      "status": "available",
+      "emoji": "🌋",
+      "img": ""
+    },
+    {
+      "id": 2,
+      "name": "Tour Monteverde",
+      "cat": "Naturaleza",
+      "desc": "Explora el misterioso Bosque Nuboso de Monteverde. Caminata por puentes colgantes entre las nubes, canopy opcional y avistamiento de quetzales y tucanes. La biodiversidad que te dejará sin palabras.",
+      "price": "$80 por persona",
+      "status": "available",
+      "emoji": "🌿",
+      "img": ""
+    },
+    {
+      "id": 3,
+      "name": "Tour Manuel Antonio",
+      "cat": "Playa",
+      "desc": "El parque nacional más visitado de Costa Rica. Monos cara blanca, perezosos en los árboles, playas de arena blanca y snorkeling en aguas cristalinas del Pacífico. Un paraíso completo.",
+      "price": "$75 por persona",
+      "status": "available",
+      "emoji": "🏄",
+      "img": ""
+    },
+    {
+      "id": 4,
+      "name": "Tour San José Cultural",
+      "cat": "Cultural",
+      "desc": "Descubre la capital tica: barrios históricos de Barrio Amón y Chino, Mercado Central, Teatro Nacional y gastronomía local auténtica. Tour a pie con todas las historias que los libros no cuentan.",
+      "price": "$45 por persona",
+      "status": "available",
+      "emoji": "🏙️",
+      "img": ""
+    },
+    {
+      "id": 5,
+      "name": "Tour Rafting Pacuare",
+      "cat": "Aventura",
+      "desc": "El río Pacuare es considerado uno de los 10 mejores ríos para rafting del mundo. Rápidos clase III y IV entre selva tropical virgen. Equipo completo y guías expertos. Adrenalina pura.",
+      "price": "$95 por persona",
+      "status": "available",
+      "emoji": "🚣",
+      "img": ""
+    },
+    {
+      "id": 6,
+      "name": "Avistamiento de Tortugas",
+      "cat": "Naturaleza",
+      "desc": "Tour nocturno en Tortuguero o Playa Grande para presenciar el desove de tortugas baulas o verdes. Una experiencia única y mágica que solo Costa Rica puede ofrecerte. Temporada: julio-octubre.",
+      "price": "Consultar",
+      "status": "limited",
+      "emoji": "🐢",
+      "img": ""
+    },
+    {
+      "id": 7,
+      "name": "Tour Caño Negro",
+      "cat": "Naturaleza",
+      "desc": "Safari fluvial por el Refugio de Vida Silvestre Caño Negro. Caimanes, monos congo, aves exóticas y delfines de río. Una experiencia de naturaleza salvaje lejos de los circuitos turísticos masivos.",
+      "price": "$70 por persona",
+      "status": "available",
+      "emoji": "🐊",
+      "img": ""
+    },
+    {
+      "id": 8,
+      "name": "Tour Jacó y Playa Hermosa",
+      "cat": "Playa",
+      "desc": "Las mejores playas del Pacífico Central: surf, caminata por la playa, observación de cocodrilos en el río Tárcoles y maravillosa puesta de sol. Ideal para relajarse y disfrutar el mar.",
+      "price": "$65 por persona",
+      "status": "available",
+      "emoji": "🌅",
+      "img": ""
+    },
+    {
+      "id": 9,
+      "name": "Tour Nocturno Selva",
+      "cat": "Nocturno",
+      "desc": "La selva cobra vida de noche. Ranas venenosas, serpientes, insectos bioluminiscentes y el canto de los grillos. Con guía experto y linternas especiales para descubrir el mundo nocturno de Costa Rica.",
+      "price": "$55 por persona",
+      "status": "available",
+      "emoji": "🌙",
+      "img": ""
+    },
+    {
+      "id": 10,
+      "name": "Tour Familiar Poas",
+      "cat": "Familiar",
+      "desc": "Perfecto para familias: Volcán Poás activo con cráter espectacular, plantaciones de fresas y el hermoso Lago de la Paz con su cascada. Poco caminata, mucho impacto. Apto para todas las edades.",
+      "price": "$60 por persona",
+      "status": "available",
+      "emoji": "👨‍👩‍👧",
+      "img": ""
+    }
+  ],
+  "packages": [
+    {
+      "id": 1,
+      "name": "Pura Vida Clásico",
+      "ico": "🌿",
+      "desc": "3 días de aventura con lo mejor de Costa Rica: Arenal con aguas termales, Monteverde entre las nubes y Manuel Antonio en el Pacífico. El recorrido ideal para primera visita al país.",
+      "price": "Desde $220/persona",
+      "detail": "3 días · Transporte incluido · Almuerzo día 1"
+    },
+    {
+      "id": 2,
+      "name": "Naturaleza Extrema",
+      "ico": "🏔️",
+      "desc": "Para los amantes de la adrenalina: rafting en el Pacuare, senderismo en Corcovado —el parque más biodiverso del planeta— y canopy extremo en Monteverde. Costa Rica sin filtros.",
+      "price": "Desde $310/persona",
+      "detail": "4 días · Alta adrenalina · Para aventureros"
+    },
+    {
+      "id": 3,
+      "name": "Costa Rica Familiar",
+      "ico": "👨‍👩‍👧",
+      "desc": "Tours diseñados para familias con niños: poco caminata, mucha diversión. Volcán Poás, finca de animales, playas seguras del Caribe y zipline suave. Recuerdos para toda la vida.",
+      "price": "Consultar",
+      "detail": "Grupos familiares · A tu ritmo · Niños bienvenidos"
+    },
+    {
+      "id": 4,
+      "name": "Luna de Miel CR",
+      "ico": "💑",
+      "desc": "Paquete romántico especial para parejas: cena privada en Arenal, glamping en el bosque nuboso, spa en aguas termales y atardecer en playa exclusiva del Pacífico Sur. Inolvidable.",
+      "price": "Desde $480/pareja",
+      "detail": "4 noches · Experiencias privadas · Ultra romántico"
+    }
+  ],
+  "gallery": []
+}
