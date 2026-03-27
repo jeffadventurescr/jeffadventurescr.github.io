@@ -13,9 +13,18 @@
     "aboutImg": "",
     "statsAuto": false,
     "stats": [
-      { "num": "10+", "lbl": "Años de experiencia" },
-      { "num": "200+", "lbl": "Tours realizados" },
-      { "num": "⭐ 5", "lbl": "Calificación" }
+      {
+        "num": "10+",
+        "lbl": "Años de experiencia"
+      },
+      {
+        "num": "200+",
+        "lbl": "Tours realizados"
+      },
+      {
+        "num": "⭐ 5",
+        "lbl": "Calificación"
+      }
     ],
     "values": [
       {
@@ -42,13 +51,41 @@
     "location": "San José, Costa Rica",
     "locationUrl": "",
     "schedule": {
-      "mon": { "open": true, "from": "07:00", "to": "18:00" },
-      "tue": { "open": true, "from": "07:00", "to": "18:00" },
-      "wed": { "open": true, "from": "07:00", "to": "18:00" },
-      "thu": { "open": true, "from": "07:00", "to": "18:00" },
-      "fri": { "open": true, "from": "07:00", "to": "18:00" },
-      "sat": { "open": true, "from": "07:00", "to": "18:00" },
-      "sun": { "open": true, "from": "07:00", "to": "14:00" }
+      "mon": {
+        "open": true,
+        "from": "07:00",
+        "to": "18:00"
+      },
+      "tue": {
+        "open": true,
+        "from": "07:00",
+        "to": "18:00"
+      },
+      "wed": {
+        "open": true,
+        "from": "07:00",
+        "to": "18:00"
+      },
+      "thu": {
+        "open": true,
+        "from": "07:00",
+        "to": "18:00"
+      },
+      "fri": {
+        "open": true,
+        "from": "07:00",
+        "to": "18:00"
+      },
+      "sat": {
+        "open": true,
+        "from": "07:00",
+        "to": "18:00"
+      },
+      "sun": {
+        "open": true,
+        "from": "07:00",
+        "to": "14:00"
+      }
     }
   },
   "products": [
@@ -187,5 +224,19 @@
       "detail": "4 noches · Experiencias privadas · Ultra romántico"
     }
   ],
-  "gallery": []
+  "gallery": [],
+  "videos": [
+    {
+      "id": 1,
+      "url": "https://www.youtube.com/watch?v=LmRzMJm2nfI",
+      "title": "Costa Rica en 4K — Naturaleza Increíble",
+      "desc": "La biodiversidad de Costa Rica desde el aire. Volcanes, selvas, playas y animales únicos."
+    },
+    {
+      "id": 2,
+      "url": "https://www.youtube.com/watch?v=_5fGQ-QC7QI",
+      "title": "Volcán Arenal y La Fortuna",
+      "desc": "Un recorrido por el volcán más icónico de Costa Rica y sus termales naturales."
+    }
+  ]
 }
