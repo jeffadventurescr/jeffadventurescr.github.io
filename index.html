@@ -1033,7 +1033,7 @@ code{background:rgba(200,115,65,.1);padding:2px 6px;border-radius:4px;font-size:
 // ═══════════════════════════════════════════════════
 //  DATA
 // ═══════════════════════════════════════════════════
-const APP_VERSION="3.0"; // bump to wipe old demo data
+const APP_VERSION="4.0"; // bump to wipe old demo data
 if(localStorage.getItem("cl_version")!==APP_VERSION){
   // Clear old data but preserve device-only configs
   const ghCfg=localStorage.getItem("cl_gh");
@@ -1118,7 +1118,8 @@ async function ensureHashed(pw){return isHashed(pw)?pw:await hashPw(pw);}
 function mergeRemoteData(remote){
   const local=loadLocalData();
   // adminPw NEVER comes from remote (it's never in data.json)
-  remote.adminPw=local.adminPw||DEFAULT.adminPw;
+  // adminPw: use local only if it's a valid hash, else DEFAULT
+  remote.adminPw=(local.adminPw&&isHashed(local.adminPw))?local.adminPw:DEFAULT.adminPw;
   // Restore local base64 images (they're never in data.json)
   if(remote.products)remote.products=remote.products.map(p=>{
     if(!p.img){const stored=loadImg("prod_"+p.id);if(stored)p.img=stored;}
@@ -1137,9 +1138,13 @@ function loadLocalData(){
   try{
     const s=localStorage.getItem("cl_data");
     const d=s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT));
-    // Always enforce a valid hash for adminPw.
-    // If missing, empty, or still plaintext (not a 64-char hex string) → use DEFAULT hash.
+    // Strict: adminPw must be a valid SHA-256 hash (64 hex chars).
+    // If missing, empty or not a valid hash → always reset to DEFAULT.
     if(!d.adminPw||!isHashed(d.adminPw)){
+      d.adminPw=DEFAULT.adminPw;
+    }
+    // Extra guard: never allow empty-string hash bypass
+    if(d.adminPw===hashPw("")||d.adminPw.length!==64){
       d.adminPw=DEFAULT.adminPw;
     }
     if(d.products)d.products=d.products.map(p=>({...p,price:p.price==="Consultar"?"":p.price}));
@@ -1802,12 +1807,14 @@ function printProducts(){
 async function openAdminWithPassword(){
   const pw=prompt("🔐 Contraseña:");
   if(pw===null)return;
+  // STRICT: stored hash MUST be a valid 64-char SHA-256 hex string
+  // Fall back to DEFAULT if localStorage has something invalid
+  const storedHash=isHashed(D.adminPw)?D.adminPw:DEFAULT.adminPw;
+  if(!isHashed(storedHash)){showNotif("❌ Error de configuración — contactá al administrador");return;}
   const hashed=await hashPw(pw);
-  // Support both hashed and legacy plaintext passwords during migration
-  const storedHash=await ensureHashed(D.adminPw);
   if(hashed===storedHash){
-    // Migrate stored pw to hash if it wasn't already
-    if(!isHashed(D.adminPw)){D.adminPw=storedHash;saveData(D);}
+    // Sync D.adminPw in case it was using a fallback
+    if(D.adminPw!==storedHash){D.adminPw=storedHash;}
     document.getElementById("admOverlay").classList.add("open");
     populateAdmin();
     clearAiImage();
@@ -2152,8 +2159,8 @@ async function changePassword(){
   const nw=document.getElementById("a-pwNew").value;
   const cf=document.getElementById("a-pwConfirm").value;
   const curHash=await hashPw(cur);
-  const storedHash=await ensureHashed(D.adminPw);
-  if(curHash!==storedHash){showNotif("❌ Contraseña actual incorrecta");return}
+  const storedHash=isHashed(D.adminPw)?D.adminPw:DEFAULT.adminPw;
+  if(!isHashed(storedHash)||curHash!==storedHash){showNotif("❌ Contraseña actual incorrecta");return}
   if(!nw||nw.length<6){showNotif("⚠️ La nueva contraseña debe tener al menos 6 caracteres");return}
   if(nw!==cf){showNotif("❌ Las contraseñas no coinciden");return}
   D.adminPw=await hashPw(nw);
