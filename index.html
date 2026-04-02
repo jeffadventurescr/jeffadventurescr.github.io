@@ -1250,6 +1250,7 @@ const DAYS_EN={mon:"Monday",tue:"Tuesday",wed:"Wednesday",thu:"Thursday",fri:"Fr
 
 let currentLang = localStorage.getItem('jaLang') || 'es';
 let D_ORIGINAL = null; // set after first load
+let D_view = null;     // current display version (translated or original)
 
 // ── Auto-translation engine (MyMemory API) ────────────────────────────
 function _cacheKey() {
@@ -1375,7 +1376,7 @@ async function setLang(lang) {
   if (lang === 'en') {
     const map = await buildTranslations();
     const Dt = applyTranslationsToD(map);
-    // Temporarily replace D for rendering
+    D_view = Dt;  // keep translated version for modal & on-demand lookups
     const _D = D;
     D = Dt;
     renderAll();
@@ -1388,6 +1389,7 @@ async function setLang(lang) {
   } else {
     // Restore original Spanish
     if (D_ORIGINAL) {
+      D_view = D_ORIGINAL;
       D = JSON.parse(JSON.stringify(D_ORIGINAL));
       renderAll();
       document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1909,7 +1911,7 @@ function renderFooter(){
 //  PRODUCT MODAL
 // ═══════════════════════════════════════════════════
 function openProductModal(id){
-  const p=D.products.find(x=>x.id==id);
+  const p=(D_view||D).products.find(x=>x.id==id);
   if(!p)return;
   const showEmoji=D.business.showProdEmoji!==false;
   const unavailMsg=p.status==="limited"
