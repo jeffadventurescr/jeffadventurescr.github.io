@@ -103,11 +103,11 @@
       "id": 2,
       "name": "Tour Monteverde",
       "cat": "Naturaleza",
-      "desc": "Explora el misterioso Bosque Nuboso de Monteverde. Caminata por puentes colgantes entre las nubes, canopy opcional y avistamiento de quetzales y tucanes. La biodiversidad que te dejará sin palabras.",
-      "price": "$80 por persona",
+      "desc": "Explora el misterioso Bosque Nuboso de Monteverde. Caminata por puentes colgantes entre las nubes, canopy opcional y avistamiento de quetzales y tucanes. Visita a Selvatura Adventure Park o Treetopia Park. Tour a fincas de cacao, café, caña de azúcar y avistamiento de vida silvestre nocturna. Una biodiversidad que te dejará sin palabras",
+      "price": "",
       "status": "available",
       "emoji": "🌿",
-      "img": ""
+      "img": "https://i.imgur.com/qEvdomn.jpeg"
     },
     {
       "id": 3,
