@@ -1253,8 +1253,8 @@ let D_ORIGINAL = null; // set after first load
 
 // ── Auto-translation engine (MyMemory API) ────────────────────────────
 function _cacheKey() {
-  // Key changes if content changes (new tours, edits, etc.)
-  const sig = (D.business.heroTitle||'') + D.products.length + D.packages.length + (D.products[0]?.name||'');
+  // v3 — bumped to force full retranslation with all fields
+  const sig = 'v3_' + (D.business.heroTitle||'') + D.products.length + D.packages.length + (D.products[0]?.name||'');
   return 'jaEN_' + btoa(unescape(encodeURIComponent(sig))).replace(/[^a-zA-Z0-9]/g,'').slice(0,24);
 }
 
@@ -3502,6 +3502,10 @@ function resetToDefault(){
 
 // ── Init ──
 document.addEventListener("DOMContentLoaded",async()=>{
+  // Clear any old translation caches (v1, v2) to avoid stale data
+  Object.keys(localStorage).filter(k=>k.startsWith('jaEN_')).forEach(k=>{
+    try{ const d=JSON.parse(localStorage.getItem(k)||'{}'); if(!d.biz_heroTitle)localStorage.removeItem(k); }catch{localStorage.removeItem(k);}
+  });
   D_ORIGINAL = JSON.parse(JSON.stringify(D));
   renderAll();
   setLang(currentLang);
