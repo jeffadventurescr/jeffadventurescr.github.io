@@ -114,7 +114,7 @@
       "name": "Tour Manuel Antonio",
       "cat": "Playa",
       "desc": "El parque nacional más visitado de Costa Rica. Monos cara blanca, perezosos en los árboles, playas de arena blanca y snorkeling en aguas cristalinas del Pacífico. Un paraíso completo.",
-      "price": "$75 por persona",
+      "price": "",
       "status": "available",
       "emoji": "🏄",
       "img": ""
@@ -124,7 +124,7 @@
       "name": "Tour San José Cultural",
       "cat": "Cultural",
       "desc": "Descubre la capital tica: barrios históricos de Barrio Amón y Chino, Mercado Central, Teatro Nacional y gastronomía local auténtica. Tour a pie con todas las historias que los libros no cuentan.",
-      "price": "$45 por persona",
+      "price": "",
       "status": "available",
       "emoji": "🏙️",
       "img": ""
@@ -144,20 +144,10 @@
       "name": "Avistamiento de Tortugas",
       "cat": "Naturaleza",
       "desc": "Tour nocturno en Tortuguero o Playa Grande para presenciar el desove de tortugas baulas o verdes. Una experiencia única y mágica que solo Costa Rica puede ofrecerte. Temporada: julio-octubre.",
-      "price": "Consultar",
+      "price": "",
       "status": "limited",
       "emoji": "🐢",
-      "img": ""
-    },
-    {
-      "id": 7,
-      "name": "Tour Caño Negro",
-      "cat": "Naturaleza",
-      "desc": "Safari fluvial por el Refugio de Vida Silvestre Caño Negro. Caimanes, monos congo, aves exóticas y delfines de río. Una experiencia de naturaleza salvaje lejos de los circuitos turísticos masivos.",
-      "price": "$70 por persona",
-      "status": "available",
-      "emoji": "🐊",
-      "img": ""
+      "img": "https://i.imgur.com/7IWJtfu.jpeg"
     },
     {
       "id": 8,
@@ -188,6 +178,16 @@
       "status": "available",
       "emoji": "👨‍👩‍👧",
       "img": ""
+    },
+    {
+      "id": 1775094968477,
+      "name": "Tour Playa Tamarindo",
+      "cat": "Aventura",
+      "desc": "Descubre las mejores playas del Pacífico Norte: surf, caminatas por la playa y vistas de una maravillosa puesta de sol. Tour al Parque Nacional Las Baulas, con avistamiento de cocodrilos, monos, aves marinas y gran variedad de fauna. Disfruta de deliciosa comida en restaurantes frente al mar. Visita Playa Tamarindo, Playa Grande y Playa Langosta. Tour de Catamaran and Jet Ski. Por la noche, vive la inigualable vida nocturna de Tamarindo y sus espectáculos de fuego frente a la playa. Todo ideal para relajarse, disfrutar del mar y conectar con la belleza natural de Costa Rica",
+      "price": "",
+      "status": "available",
+      "emoji": "🌅",
+      "img": "https://i.imgur.com/UrCyIaw.jpeg"
     }
   ],
   "packages": [
