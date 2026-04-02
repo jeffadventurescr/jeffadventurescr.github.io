@@ -47,6 +47,18 @@ a{text-decoration:none;color:inherit}
 .nav-links a:hover{color:var(--gold)}
 .nav-wa{background:var(--gold)!important;color:#150800!important;padding:8px 20px;border-radius:50px!important;box-shadow:0 3px 12px rgba(245,168,35,.4);transition:all var(--tr)!important;font-weight:900!important}
 .nav-wa:hover{background:#D98A10!important;transform:translateY(-1px)}
+.lang-toggle{display:flex;align-items:center;gap:0;background:rgba(255,255,255,.1);border-radius:50px;padding:3px;border:1px solid rgba(255,255,255,.2);flex-shrink:0}
+.lang-btn{background:none;border:none;cursor:pointer;font-size:.78rem;font-weight:800;color:rgba(253,245,230,.6);padding:4px 10px;border-radius:50px;transition:all .2s;letter-spacing:.05em}
+.lang-btn.active{background:var(--gold);color:#150800;box-shadow:0 2px 8px rgba(245,168,35,.4)}
+/* ── Lang loading overlay ── */
+#langLoadOverlay{display:none;position:fixed;inset:0;background:rgba(8,20,10,.88);z-index:99999;flex-direction:column;align-items:center;justify-content:center;gap:18px;backdrop-filter:blur(4px)}
+.lang-load-box{background:var(--surface);border-radius:18px;padding:32px 40px;text-align:center;box-shadow:0 16px 48px rgba(0,0,0,.5);border:1px solid rgba(245,168,35,.2);min-width:260px}
+.lang-load-ico{font-size:2.4rem;margin-bottom:10px}
+.lang-load-title{font-family:'Oswald',sans-serif;font-size:1.15rem;color:var(--gold);margin-bottom:6px}
+.lang-load-sub{font-size:.82rem;color:var(--text-l);margin-bottom:18px}
+.lang-load-track{background:rgba(255,255,255,.1);border-radius:50px;height:8px;overflow:hidden}
+.lang-load-fill{height:100%;background:linear-gradient(90deg,var(--caramel),var(--gold));border-radius:50px;transition:width .3s ease;width:0%}
+.lang-load-pct{font-size:.78rem;color:var(--text-l);margin-top:8px;font-weight:700}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:5px}
 .hamburger span{width:24px;height:2px;background:var(--cream);border-radius:2px;transition:all .3s}
 
@@ -238,7 +250,20 @@ footer{background:var(--brown-d);color:rgba(253,245,230,.75);padding:56px 28px 2
 /* ── 5-CLICK ADMIN ACCESS ── */
 .logo-click-hint{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--brown-d);color:var(--cream);padding:8px 18px;border-radius:50px;font-size:.78rem;font-weight:700;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none}
 .logo-click-hint.show{opacity:1}
-/* ── GITHUB PUBLISH TAB ── */
+/* ── TRASLADOS ── */
+#traslados{padding:80px 24px;background:var(--brown-d)}
+#traslados .sec-h2{color:var(--cream)}
+#traslados .sec-sub{color:rgba(253,245,230,.72)}
+#traslados .sec-lbl{color:var(--gold)}
+.trl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-bottom:40px}
+.trl-card{background:rgba(255,255,255,.07);border:1px solid rgba(245,168,35,.22);border-radius:var(--r);padding:22px 18px;text-align:center;transition:all var(--tr);cursor:default}
+.trl-card:hover{background:rgba(255,255,255,.13);border-color:var(--gold);transform:translateY(-4px)}
+.trl-ico{font-size:2rem;margin-bottom:10px}
+.trl-name{font-family:'Oswald',sans-serif;font-size:1rem;color:var(--gold);font-weight:700;margin-bottom:4px}
+.trl-desc{font-size:.78rem;color:rgba(253,245,230,.6);line-height:1.5}
+.trl-features{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:36px}
+.trl-feat{background:rgba(245,168,35,.12);border:1px solid rgba(245,168,35,.25);border-radius:50px;padding:7px 16px;font-size:.8rem;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:6px}
+@media(max-width:600px){.trl-grid{grid-template-columns:repeat(2,1fr)}}
 .gh-hero{text-align:center;padding:10px 0 22px;border-bottom:2px solid var(--cream-dd);margin-bottom:22px}
 .gh-hero-ico{font-size:42px;margin-bottom:8px}
 .gh-hero h3{font-family:'Oswald',sans-serif;font-size:1.25rem;color:var(--brown-d);margin-bottom:8px}
@@ -426,6 +451,7 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(13,33,16,.97);flex-direction:column;padding:18px 24px;gap:14px;border-bottom:2px solid rgba(249,168,37,.2);box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:700}
   .nav-links.open{display:flex}
   .hamburger{display:flex}
+  .lang-toggle{margin-right:8px}
   .hero-wrap{grid-template-columns:1fr;gap:30px;text-align:center}
   .hero-btns{justify-content:center}
   .hero-stats{justify-content:center}
@@ -488,13 +514,18 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
     <span id="navLogoText">Jeff <em>Adventures</em></span>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#productos">Tours</a></li>
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="#menu">Paquetes</a></li>
-    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#productos" data-i18n="navTours">Tours</a></li>
+    <li><a href="#videos" data-i18n="navVideos">Videos</a></li>
+    <li><a href="#menu" data-i18n="navPackages">Paquetes</a></li>
+    <li><a href="#traslados" data-i18n="navTransfers">Traslados</a></li>
+    <li><a href="#galeria" data-i18n="navGallery">Galería</a></li>
     <li><a href="#nosotros">Jeff</a></li>
-    <li><a href="#contacto" class="nav-wa">🗺️ Reservar</a></li>
+    <li><a href="#contacto" class="nav-wa" data-i18n="navBook">🗺️ Reservar</a></li>
   </ul>
+  <div class="lang-toggle" id="langToggle">
+    <button class="lang-btn active" id="btnES" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" id="btnEN" onclick="setLang('en')">EN</button>
+  </div>
   <button class="hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -507,12 +538,12 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
   <div class="hero-dots"></div>
   <div class="hero-wrap">
     <div class="hero-text">
-      <div class="hero-badge">🦎 Costa Rica · Pura Vida</div>
+      <div class="hero-badge" data-i18n="heroBadge">🦎 Costa Rica · Pura Vida</div>
       <h1 class="hero-h1" id="heroTitle">Aventuras que <em>transforman</em></h1>
       <p class="hero-sub" id="heroSubtitle">Tours privados y grupales por la Costa Rica auténtica. Naturaleza, aventura y cultura con Jeff.</p>
       <div class="hero-btns">
-        <button class="btn-pr" onclick="scrollToSec('#productos')">🗺️ Ver Tours</button>
-        <button class="btn-sc" onclick="scrollToSec('#contacto')">📱 Reservar Ahora</button>
+        <button class="btn-pr" onclick="scrollToSec('#productos')" data-i18n="heroBtnTours">🗺️ Ver Tours</button>
+        <button class="btn-sc" onclick="scrollToSec('#contacto')" data-i18n="heroBtnBook">📱 Reservar Ahora</button>
       </div>
       <div class="hero-stats" id="heroStats"></div>
     </div>
@@ -522,7 +553,7 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
       </div>
       <div class="hero-float-tag">
         <span class="tag-ico">⭐</span>
-        <div><strong>Guía Turístico</strong><span>+200 tours realizados</span></div>
+        <div><strong data-i18n="floatGuide">Guía Turístico</strong><span data-i18n="floatTours">+200 tours realizados</span></div>
       </div>
     </div>
   </div>
@@ -532,9 +563,9 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
 <section id="productos">
   <div class="container">
     <div class="sec-hd c reveal">
-      <span class="sec-lbl">Nuestros Tours</span>
-      <h2 class="sec-h2">Experiencias que <br>no olvidarás</h2>
-      <p class="sec-sub">Cada tour es diseñado según tus intereses y ritmo. ¡Contacta a Jeff y reserva tu aventura!</p>
+      <span class="sec-lbl" data-i18n="prodLbl">Nuestros Tours</span>
+      <h2 class="sec-h2" data-i18n="prodH2">Experiencias que <br>no olvidarás</h2>
+      <p class="sec-sub" data-i18n="prodSub">Cada tour es diseñado según tus intereses y ritmo. ¡Contacta a Jeff y reserva tu aventura!</p>
     </div>
     <div id="productsContainer" class="reveal"></div>
   </div>
@@ -544,9 +575,9 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
 <section id="videos">
   <div class="container">
     <div class="sec-hd c reveal">
-      <span class="sec-lbl">En Video</span>
-      <h2 class="sec-h2">Vive la experiencia <br>antes de vivirla</h2>
-      <p class="sec-sub">Mirá los tours en acción. Naturaleza, aventura y emociones reales de quienes ya vivieron la experiencia.</p>
+      <span class="sec-lbl" data-i18n="vidLbl">En Video</span>
+      <h2 class="sec-h2" data-i18n="vidH2">Vive la experiencia <br>antes de vivirla</h2>
+      <p class="sec-sub" data-i18n="vidSub">Mirá los tours en acción. Naturaleza, aventura y emociones reales de quienes ya vivieron la experiencia.</p>
     </div>
     <div class="vid-grid reveal" id="vidGrid"></div>
   </div>
@@ -560,11 +591,11 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
         <div class="about-img-main" id="aboutImgMain"><div class="about-img-ph">🏔️</div></div>
         <div class="about-tag">
           <span class="at-ico">🌿</span>
-          <div><strong>Guía Local</strong><span>15+ años de experiencia</span></div>
+          <div><strong data-i18n="guideLocal">Guía Local</strong><span data-i18n="guideExp">15+ años de experiencia</span></div>
         </div>
       </div>
       <div class="about-content reveal">
-        <span class="sec-lbl">Tu Guía</span>
+        <span class="sec-lbl" data-i18n="aboutLbl">Tu Guía</span>
         <h2 class="sec-h2" id="aboutTitle">Jeff, tu guía de aventuras</h2>
         <p class="sec-sub" id="aboutText"></p>
         <div class="about-vals" id="aboutVals"></div>
@@ -577,23 +608,93 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
 <section id="menu">
   <div class="container">
     <div class="sec-hd c reveal">
-      <span class="sec-lbl">Paquetes</span>
-      <h2 class="sec-h2">Paquetes de <br>aventura</h2>
-      <p class="sec-sub">Combina varios tours para una experiencia completa. ¡Grupos, familias o parejas — tenemos el paquete ideal!</p>
+      <span class="sec-lbl" data-i18n="pkgLbl">Paquetes</span>
+      <h2 class="sec-h2" data-i18n="pkgH2">Paquetes de <br>aventura</h2>
+      <p class="sec-sub" data-i18n="pkgSub">Combina varios tours para una experiencia completa. ¡Grupos, familias o parejas — tenemos el paquete ideal!</p>
     </div>
     <div class="menu-grid reveal" id="menuGrid"></div>
     <div class="menu-cta reveal">
-      <button class="btn-lt" onclick="openWhatsApp('paquetes')">📋 Consultar Paquetes por WhatsApp</button>
+      <button class="btn-lt" onclick="openWhatsApp('paquetes')" data-i18n="pkgBtn">📋 Consultar Paquetes por WhatsApp</button>
     </div>
   </div>
 </section>
 
 <!-- GALLERY -->
 <section id="galeria">
+
+<!-- TRASLADOS -->
+<section id="traslados">
+  <div class="container">
+    <div class="sec-hd c reveal">
+      <span class="sec-lbl" data-i18n="trlLbl">Traslados</span>
+      <h2 class="sec-h2" data-i18n="trlH2">Transporte a todo <br>el país</h2>
+      <p class="sec-sub" data-i18n="trlSub">Además de tours, Jeff ofrece servicio de traslado privado a los principales destinos turísticos de Costa Rica. Cómodo, puntual y con conductor bilingüe.</p>
+    </div>
+    <div class="trl-features reveal">
+      <div class="trl-feat" data-i18n="trlFeat1">🚐 Vehículo con A/C</div>
+      <div class="trl-feat" data-i18n="trlFeat2">🗣️ Conductor bilingüe</div>
+      <div class="trl-feat" data-i18n="trlFeat3">⏰ Horario flexible</div>
+      <div class="trl-feat" data-i18n="trlFeat4">📍 Recogida en hotel</div>
+      <div class="trl-feat" data-i18n="trlFeat5">✈️ Traslado aeropuerto</div>
+    </div>
+    <div class="trl-grid reveal">
+      <div class="trl-card">
+        <div class="trl-ico">✈️</div>
+        <div class="trl-name" data-i18n="trlD1name">Aeropuerto SJO</div>
+        <div class="trl-desc" data-i18n="trlD1desc">Juan Santamaría · Llegadas y salidas</div>
+      </div>
+      <div class="trl-card">
+        <div class="trl-ico">🌋</div>
+        <div class="trl-name" data-i18n="trlD2name">La Fortuna / Arenal</div>
+        <div class="trl-desc" data-i18n="trlD2desc">Volcán, aguas termales y aventura</div>
+      </div>
+      <div class="trl-card">
+        <div class="trl-ico">🌿</div>
+        <div class="trl-name" data-i18n="trlD3name">Monteverde</div>
+        <div class="trl-desc" data-i18n="trlD3desc">Bosque nuboso y canopy</div>
+      </div>
+      <div class="trl-card">
+        <div class="trl-ico">🏄</div>
+        <div class="trl-name" data-i18n="trlD4name">Manuel Antonio</div>
+        <div class="trl-desc" data-i18n="trlD4desc">Parque nacional y playas del Pacífico</div>
+      </div>
+      <div class="trl-card">
+        <div class="trl-ico">🌊</div>
+        <div class="trl-name" data-i18n="trlD5name">Jacó / Playa Hermosa</div>
+        <div class="trl-desc" data-i18n="trlD5desc">Playas del Pacífico Central</div>
+      </div>
+      <div class="trl-card">
+        <div class="trl-ico">🌅</div>
+        <div class="trl-name" data-i18n="trlD6name">Tamarindo / Guanacaste</div>
+        <div class="trl-desc" data-i18n="trlD6desc">Surf y puestas de sol espectaculares</div>
+      </div>
+      <div class="trl-card">
+        <div class="trl-ico">🐢</div>
+        <div class="trl-name" data-i18n="trlD7name">Puerto Viejo / Caribe</div>
+        <div class="trl-desc" data-i18n="trlD7desc">Costa Caribe y cultura afrocostarricense</div>
+      </div>
+      <div class="trl-card">
+        <div class="trl-ico">🐋</div>
+        <div class="trl-name" data-i18n="trlD8name">Bahía Ballena</div>
+        <div class="trl-desc" data-i18n="trlD8desc">Pacífico Sur · Avistamiento de ballenas</div>
+      </div>
+      <div class="trl-card">
+        <div class="trl-ico">🗺️</div>
+        <div class="trl-name" data-i18n="trlD9name">Destino personalizado</div>
+        <div class="trl-desc" data-i18n="trlD9desc">¿Otro lugar? Consultá disponibilidad</div>
+      </div>
+    </div>
+    <div class="menu-cta reveal">
+      <button class="btn-lt" onclick="openWhatsApp('traslados')" data-i18n="trlBtn">🚐 Consultar Traslado por WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
   <div class="container">
     <div class="sec-hd reveal">
-      <span class="sec-lbl">Galería</span>
-      <h2 class="sec-h2">Momentos <br>inolvidables</h2>
+      <span class="sec-lbl" data-i18n="galLbl">Galería</span>
+      <h2 class="sec-h2" data-i18n="galH2">Momentos <br>inolvidables</h2>
     </div>
     <div class="gal-masonry reveal" id="galGrid"></div>
   </div>
@@ -605,34 +706,34 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
 <section id="contacto">
   <div class="container">
     <div class="sec-hd reveal">
-      <span class="sec-lbl">Reservas</span>
-      <h2 class="sec-h2">¿Listo para <br>tu aventura?</h2>
-      <p class="sec-sub">Escribile a Jeff por WhatsApp o correo. ¡Respuesta rápida garantizada!</p>
+      <span class="sec-lbl" data-i18n="ctaLbl">Reservas</span>
+      <h2 class="sec-h2" data-i18n="ctaH2">¿Listo para <br>tu aventura?</h2>
+      <p class="sec-sub" data-i18n="ctaSub">Escribile a Jeff por WhatsApp o correo. ¡Respuesta rápida garantizada!</p>
     </div>
     <div class="contact-grid">
       <div class="c-info reveal" id="contactInfo"></div>
       <div class="c-form reveal">
-        <h3>Solicitar un Tour</h3>
-        <p class="c-form-sub">¿Cómo preferís que Jeff te contacte?</p>
+        <h3 data-i18n="formH3">Solicitar un Tour</h3>
+        <p class="c-form-sub" data-i18n="formSub">¿Cómo preferís que Jeff te contacte?</p>
         <div class="c-send-method">
-          <button class="csm-btn act" id="csmWa" onclick="setContactMethod('wa')">📱 WhatsApp</button>
-          <button class="csm-btn" id="csmEmail" onclick="setContactMethod('email')">✉️ Correo</button>
+          <button class="csm-btn act" id="csmWa" onclick="setContactMethod('wa')" data-i18n="formWa">📱 WhatsApp</button>
+          <button class="csm-btn" id="csmEmail" onclick="setContactMethod('email')" data-i18n="formEmail">✉️ Correo</button>
         </div>
         <div class="f-row">
-          <div class="f-grp"><label>Tu nombre *</label><input type="text" id="fName" placeholder="Tu nombre completo"></div>
-          <div class="f-grp" id="fPhoneGrp" style="display:none"><label>Teléfono</label><input type="tel" id="fPhone" placeholder="Ej: 8888-8888"></div>
+          <div class="f-grp"><label data-i18n="formName">Tu nombre *</label><input type="text" id="fName" data-i18n-ph="formNamePh" placeholder="Tu nombre completo"></div>
+          <div class="f-grp" id="fPhoneGrp" style="display:none"><label data-i18n="formPhone">Teléfono</label><input type="tel" id="fPhone" data-i18n-ph="formPhonePh" placeholder="Ej: 8888-8888"></div>
         </div>
         <div class="f-grp">
-          <label>¿Qué tour te interesa? <span style="font-size:.74rem;color:var(--text-l);font-weight:400">(o escribí tu consulta abajo)</span></label>
+          <label><span data-i18n="formTourLabel">¿Qué tour te interesa?</span> <span style="font-size:.74rem;color:var(--text-l);font-weight:400" data-i18n="formTourHint">(o escribí tu consulta abajo)</span></label>
           <div class="f-multi-picker" id="fProductPicker">
             <!-- populated by renderProducts() -->
           </div>
-          <p id="fPickerHint" style="display:none;font-size:.75rem;color:#dc3545;margin-top:4px;font-weight:700">⚠️ Seleccioná al menos un producto</p>
+          <p id="fPickerHint" style="display:none;font-size:.75rem;color:#dc3545;margin-top:4px;font-weight:700" data-i18n="formPickerHint">⚠️ Seleccioná al menos un producto</p>
         </div>
-        <div class="f-grp"><label>Mensaje *</label>
-          <textarea id="fMsg" rows="3" placeholder="Fecha del tour, número de personas, intereses especiales..."></textarea>
+        <div class="f-grp"><label data-i18n="formMsg">Mensaje *</label>
+          <textarea id="fMsg" rows="3" data-i18n-ph="formMsgPh" placeholder="Fecha del tour, número de personas, intereses especiales..."></textarea>
         </div>
-        <button class="btn-pr f-send-btn" id="fSendBtn" onclick="safeSendForm()">📱 Enviar por WhatsApp</button>
+        <button class="btn-pr f-send-btn" id="fSendBtn" onclick="safeSendForm()" data-i18n="formSendBtn">📱 Enviar por WhatsApp</button>
       </div>
     </div>
   </div>
@@ -648,30 +749,42 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
       <p id="ftTagline">Flan de coco & más — platillos caseros hechos con amor.</p>
     </div>
     <div class="ft-col">
-      <h4>Explora</h4>
+      <h4 data-i18n="footerExplore">Explora</h4>
       <ul>
-        <li><a href="#productos">Tours</a></li>
-        <li><a href="#menu">Paquetes Semanales</a></li>
-        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#productos" data-i18n="navTours">Tours</a></li>
+        <li><a href="#menu" data-i18n="footerPackages">Paquetes Semanales</a></li>
+        <li><a href="#traslados" data-i18n="navTransfers">Traslados</a></li>
+        <li><a href="#galeria" data-i18n="navGallery">Galería</a></li>
         <li><a href="#nosotros">Jeff</a></li>
-        <li><a href="#videos">Videos</a></li>
+        <li><a href="#videos" data-i18n="navVideos">Videos</a></li>
       </ul>
     </div>
     <div class="ft-col">
-      <h4>Reservas</h4>
+      <h4 data-i18n="ctaLbl">Reservas</h4>
       <ul id="ftContact"></ul>
     </div>
   </div>
   <div class="ft-bot" style="max-width:1160px;margin:0 auto">
-    <span>© <span id="ftYear"></span> Jeff Adventures CR. Todos los derechos reservados.</span>
+    <span>© <span id="ftYear"></span> Jeff Adventures CR. <span data-i18n="footerRights">Todos los derechos reservados.</span></span>
   </div>
 </footer>
 
 <!-- WA FLOAT -->
 <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" onclick="return openWhatsAppFloat()">
-  <div class="wa-tip">¡Reservar tour!</div>
+  <div class="wa-tip" data-i18n="waTip">¡Reservar tour!</div>
   <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
+
+<!-- LANG LOADING OVERLAY -->
+<div id="langLoadOverlay">
+  <div class="lang-load-box">
+    <div class="lang-load-ico">🌐</div>
+    <div class="lang-load-title">Translating page…</div>
+    <div class="lang-load-sub">First time only — results are cached</div>
+    <div class="lang-load-track"><div class="lang-load-fill" id="langLoadBar"></div></div>
+    <div class="lang-load-pct" id="langLoadPct">0%</div>
+  </div>
+</div>
 
 <!-- NOTIFICATION -->
 <div class="notif" id="notif"></div>
@@ -1044,7 +1157,285 @@ if(localStorage.getItem("cl_version")!==APP_VERSION){
   localStorage.setItem("cl_version",APP_VERSION);
 }
 
+// ── i18n ──────────────────────────────────────────────────────────────
+const LANG_DATA = {
+  es: {
+    navTours:"Tours", navVideos:"Videos", navPackages:"Paquetes",
+    navGallery:"Galería", navBook:"🗺️ Reservar",
+    heroBadge:"🦎 Costa Rica · Pura Vida",
+    heroBtnTours:"🗺️ Ver Tours", heroBtnBook:"📱 Reservar Ahora",
+    floatGuide:"Guía Turístico", floatTours:"+200 tours realizados",
+    prodLbl:"Nuestros Tours", prodH2:"Experiencias que <br>no olvidarás",
+    prodSub:"Cada tour es diseñado según tus intereses y ritmo. ¡Contacta a Jeff y reserva tu aventura!",
+    vidLbl:"En Video", vidH2:"Vive la experiencia <br>antes de vivirla",
+    vidSub:"Mirá los tours en acción. Naturaleza, aventura y emociones reales de quienes ya vivieron la experiencia.",
+    aboutLbl:"Tu Guía", guideLocal:"Guía Local", guideExp:"15+ años de experiencia",
+    pkgLbl:"Paquetes", pkgH2:"Paquetes de <br>aventura",
+    pkgSub:"Combina varios tours para una experiencia completa. ¡Grupos, familias o parejas — tenemos el paquete ideal!",
+    pkgBtn:"📋 Consultar Paquetes por WhatsApp",
+    galLbl:"Galería", galH2:"Momentos <br>inolvidables",
+    ctaLbl:"Reservas", ctaH2:"¿Listo para <br>tu aventura?",
+    ctaSub:"Escribile a Jeff por WhatsApp o correo. ¡Respuesta rápida garantizada!",
+    formH3:"Solicitar un Tour", formSub:"¿Cómo preferís que Jeff te contacte?",
+    formWa:"📱 WhatsApp", formEmail:"✉️ Correo",
+    formName:"Tu nombre *", formPhone:"Teléfono",
+    formNamePh:"Tu nombre completo", formPhonePh:"Ej: 8888-8888",
+    formTourLabel:"¿Qué tour te interesa?", formTourHint:"(o escribí tu consulta abajo)",
+    formPickerHint:"⚠️ Seleccioná al menos un producto",
+    formMsg:"Mensaje *", formMsgPh:"Fecha del tour, número de personas, intereses especiales...",
+    formSendBtn:"📱 Enviar por WhatsApp",
+    footerExplore:"Explora", footerPackages:"Paquetes Semanales", footerRights:"Todos los derechos reservados.",
+    waTip:"¡Reservar tour!",
+    navTransfers:"Traslados",
+    trlLbl:"Traslados", trlH2:"Transporte a todo <br>el país",
+    trlSub:"Además de tours, Jeff ofrece servicio de traslado privado a los principales destinos turísticos de Costa Rica. Cómodo, puntual y con conductor bilingüe.",
+    trlFeat1:"🚐 Vehículo con A/C", trlFeat2:"🗣️ Conductor bilingüe", trlFeat3:"⏰ Horario flexible", trlFeat4:"📍 Recogida en hotel", trlFeat5:"✈️ Traslado aeropuerto",
+    trlD1name:"Aeropuerto SJO", trlD1desc:"Juan Santamaría · Llegadas y salidas",
+    trlD2name:"La Fortuna / Arenal", trlD2desc:"Volcán, aguas termales y aventura",
+    trlD3name:"Monteverde", trlD3desc:"Bosque nuboso y canopy",
+    trlD4name:"Manuel Antonio", trlD4desc:"Parque nacional y playas del Pacífico",
+    trlD5name:"Jacó / Playa Hermosa", trlD5desc:"Playas del Pacífico Central",
+    trlD6name:"Tamarindo / Guanacaste", trlD6desc:"Surf y puestas de sol espectaculares",
+    trlD7name:"Puerto Viejo / Caribe", trlD7desc:"Costa Caribe y cultura afrocostarricense",
+    trlD8name:"Bahía Ballena", trlD8desc:"Pacífico Sur · Avistamiento de ballenas",
+    trlD9name:"Destino personalizado", trlD9desc:"¿Otro lugar? Consultá disponibilidad",
+    trlBtn:"🚐 Consultar Traslado por WhatsApp",
+  },
+  en: {
+    navTours:"Tours", navVideos:"Videos", navPackages:"Packages",
+    navGallery:"Gallery", navBook:"🗺️ Book Now",
+    heroBadge:"🦎 Costa Rica · Pura Vida",
+    heroBtnTours:"🗺️ View Tours", heroBtnBook:"📱 Book Now",
+    floatGuide:"Tour Guide", floatTours:"+200 tours completed",
+    prodLbl:"Our Tours", prodH2:"Experiences you <br>won't forget",
+    prodSub:"Every tour is designed around your interests and pace. Contact Jeff and book your adventure!",
+    vidLbl:"On Video", vidH2:"Experience it <br>before you live it",
+    vidSub:"Watch the tours in action. Nature, adventure and real emotions from those who already lived it.",
+    aboutLbl:"Your Guide", guideLocal:"Local Guide", guideExp:"15+ years of experience",
+    pkgLbl:"Packages", pkgH2:"Adventure <br>packages",
+    pkgSub:"Combine several tours for a complete experience. Groups, families or couples — we have the perfect package!",
+    pkgBtn:"📋 Ask about Packages on WhatsApp",
+    galLbl:"Gallery", galH2:"Unforgettable <br>moments",
+    ctaLbl:"Bookings", ctaH2:"Ready for <br>your adventure?",
+    ctaSub:"Message Jeff on WhatsApp or email. Quick response guaranteed!",
+    formH3:"Request a Tour", formSub:"How would you prefer Jeff to contact you?",
+    formWa:"📱 WhatsApp", formEmail:"✉️ Email",
+    formName:"Your name *", formPhone:"Phone",
+    formNamePh:"Your full name", formPhonePh:"E.g. 8888-8888",
+    formTourLabel:"Which tour interests you?", formTourHint:"(or write your question below)",
+    formPickerHint:"⚠️ Please select at least one tour",
+    formMsg:"Message *", formMsgPh:"Tour date, number of people, special interests...",
+    formSendBtn:"📱 Send via WhatsApp",
+    footerExplore:"Explore", footerPackages:"Weekly Packages", footerRights:"All rights reserved.",
+    waTip:"Book a tour!",
+    navTransfers:"Transfers",
+    trlLbl:"Transfers", trlH2:"Transportation across <br>the country",
+    trlSub:"Beyond tours, Jeff offers private transfer service to Costa Rica's top destinations. Comfortable, punctual, and with a bilingual driver.",
+    trlFeat1:"🚐 A/C Vehicle", trlFeat2:"🗣️ Bilingual driver", trlFeat3:"⏰ Flexible schedule", trlFeat4:"📍 Hotel pickup", trlFeat5:"✈️ Airport transfer",
+    trlD1name:"Airport SJO", trlD1desc:"Juan Santamaría · Arrivals & departures",
+    trlD2name:"La Fortuna / Arenal", trlD2desc:"Volcano, hot springs & adventure",
+    trlD3name:"Monteverde", trlD3desc:"Cloud forest & canopy",
+    trlD4name:"Manuel Antonio", trlD4desc:"National park & Pacific beaches",
+    trlD5name:"Jacó / Playa Hermosa", trlD5desc:"Central Pacific beaches",
+    trlD6name:"Tamarindo / Guanacaste", trlD6desc:"Surf & spectacular sunsets",
+    trlD7name:"Puerto Viejo / Caribbean", trlD7desc:"Caribbean coast & Afro-Costa Rican culture",
+    trlD8name:"Bahía Ballena", trlD8desc:"South Pacific · Whale watching",
+    trlD9name:"Custom destination", trlD9desc:"Somewhere else? Ask about availability",
+    trlBtn:"🚐 Book a Transfer on WhatsApp",
+  }
+};
+
+// Days of week in English (used by schedule renderer in EN mode)
+const DAYS_EN={mon:"Monday",tue:"Tuesday",wed:"Wednesday",thu:"Thursday",fri:"Friday",sat:"Saturday",sun:"Sunday"};
+
+let currentLang = localStorage.getItem('jaLang') || 'es';
+let D_ORIGINAL = null; // set after first load
+
+// ── Auto-translation engine (MyMemory API) ────────────────────────────
+function _cacheKey() {
+  // Key changes if content changes (new tours, edits, etc.)
+  const sig = (D.business.heroTitle||'') + D.products.length + D.packages.length + (D.products[0]?.name||'');
+  return 'jaEN_' + btoa(unescape(encodeURIComponent(sig))).replace(/[^a-zA-Z0-9]/g,'').slice(0,24);
+}
+
+async function _tx(text) {
+  if (!text || !text.trim()) return text;
+  // Split text into chunks ≤480 chars at sentence/newline boundaries
+  const chunks = [];
+  const sentences = text.split(/(?<=[.!?])\s+|\n\n+/);
+  let buf = '';
+  for (const s of sentences) {
+    if ((buf + ' ' + s).trim().length > 480 && buf) {
+      chunks.push(buf.trim());
+      buf = s;
+    } else {
+      buf = buf ? buf + ' ' + s : s;
+    }
+  }
+  if (buf.trim()) chunks.push(buf.trim());
+
+  const parts = [];
+  for (const chunk of chunks) {
+    try {
+      const r = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(chunk) + '&langpair=es|en');
+      const j = await r.json();
+      parts.push(j.responseData?.translatedText || chunk);
+    } catch { parts.push(chunk); }
+    if (chunks.length > 1) await new Promise(r => setTimeout(r, 180));
+  }
+  return parts.join(' ');
+}
+
+async function buildTranslations() {
+  const ck = _cacheKey();
+  try {
+    const cached = localStorage.getItem(ck);
+    if (cached) return JSON.parse(cached);
+  } catch {}
+
+  // Show loading overlay
+  document.getElementById('langLoadOverlay').style.display = 'flex';
+
+  const map = {};
+  const queue = [];
+
+  const add = (key, val) => { if (val) queue.push({key, val}); };
+
+  // Business fields
+  add('biz_tagline',    D.business.tagline);
+  add('biz_heroTitle',  D.business.heroTitle);
+  add('biz_heroSub',    D.business.heroSub);
+  add('biz_aboutTitle', D.business.aboutTitle);
+  add('biz_aboutText',  D.business.aboutText);
+  (D.business.stats||[]).forEach((s,i)  => add(`stat_${i}_lbl`, s.lbl));
+  (D.business.values||[]).forEach((v,i) => { add(`val_${i}_title`, v.title); add(`val_${i}_desc`, v.desc); });
+
+  // Products
+  D.products.forEach((p,i) => { add(`prod_${i}_name`, p.name); add(`prod_${i}_cat`, p.cat); add(`prod_${i}_desc`, p.desc); });
+
+  // Packages
+  D.packages.forEach((p,i) => { add(`pkg_${i}_name`, p.name); add(`pkg_${i}_desc`, p.desc); add(`pkg_${i}_price`, p.price); add(`pkg_${i}_detail`, p.detail); });
+
+  // Videos
+  (D.videos||[]).forEach((v,i) => { add(`vid_${i}_title`, v.title); add(`vid_${i}_desc`, v.desc); });
+
+  // Translate sequentially to respect free API rate limits
+  let done = 0;
+  for (const item of queue) {
+    map[item.key] = await _tx(item.val);
+    done++;
+    const pct = Math.round(done / queue.length * 100);
+    const bar = document.getElementById('langLoadBar');
+    const lbl = document.getElementById('langLoadPct');
+    if (bar) bar.style.width = pct + '%';
+    if (lbl) lbl.textContent = pct + '%';
+  }
+
+  try { localStorage.setItem(ck, JSON.stringify(map)); } catch {}
+  document.getElementById('langLoadOverlay').style.display = 'none';
+  return map;
+}
+
+function applyTranslationsToD(map) {
+  // Deep clone original and patch with translated values
+  const Dt = JSON.parse(JSON.stringify(D_ORIGINAL));
+  const g = (k) => map[k] || undefined;
+
+  if (g('biz_tagline'))    Dt.business.tagline    = g('biz_tagline');
+  if (g('biz_heroTitle'))  Dt.business.heroTitle  = g('biz_heroTitle');
+  if (g('biz_heroSub'))    Dt.business.heroSub    = g('biz_heroSub');
+  if (g('biz_aboutTitle')) Dt.business.aboutTitle = g('biz_aboutTitle');
+  if (g('biz_aboutText'))  Dt.business.aboutText  = g('biz_aboutText');
+  (Dt.business.stats||[]).forEach((s,i)  => { if(g(`stat_${i}_lbl`)) s.lbl = g(`stat_${i}_lbl`); });
+  (Dt.business.values||[]).forEach((v,i) => { if(g(`val_${i}_title`)) v.title=g(`val_${i}_title`); if(g(`val_${i}_desc`)) v.desc=g(`val_${i}_desc`); });
+  Dt.products.forEach((p,i) => { if(g(`prod_${i}_name`)) p.name=g(`prod_${i}_name`); if(g(`prod_${i}_cat`)) p.cat=g(`prod_${i}_cat`); if(g(`prod_${i}_desc`)) p.desc=g(`prod_${i}_desc`); });
+  Dt.packages.forEach((p,i) => { if(g(`pkg_${i}_name`)) p.name=g(`pkg_${i}_name`); if(g(`pkg_${i}_desc`)) p.desc=g(`pkg_${i}_desc`); if(g(`pkg_${i}_price`)) p.price=g(`pkg_${i}_price`); if(g(`pkg_${i}_detail`)) p.detail=g(`pkg_${i}_detail`); });
+  (Dt.videos||[]).forEach((v,i) => { if(g(`vid_${i}_title`)) v.title=g(`vid_${i}_title`); if(g(`vid_${i}_desc`)) v.desc=g(`vid_${i}_desc`); });
+  return Dt;
+}
+
+async function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('jaLang', lang);
+  document.documentElement.lang = lang;
+
+  // Apply static UI strings
+  const T = LANG_DATA[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (T[key] !== undefined) el.innerHTML = T[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (T[key] !== undefined) el.placeholder = T[key];
+  });
+  document.getElementById('btnES').classList.toggle('active', lang === 'es');
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+
+  if (lang === 'en') {
+    const map = await buildTranslations();
+    const Dt = applyTranslationsToD(map);
+    // Temporarily replace D for rendering
+    const _D = D;
+    D = Dt;
+    renderAll();
+    D = _D;
+    // Re-apply static strings (renderAll may overwrite some)
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (T[key] !== undefined) el.innerHTML = T[key];
+    });
+  } else {
+    // Restore original Spanish
+    if (D_ORIGINAL) {
+      D = JSON.parse(JSON.stringify(D_ORIGINAL));
+      renderAll();
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (T[key] !== undefined) el.innerHTML = T[key];
+      });
+    }
+  }
+}
+// ── end i18n ───────────────────────────────────────────────────────────
+// ── UI render strings (used inside JS render functions) ───────────────
+const UI_STRINGS = {
+  es: {
+    statusAvail:"Disponible", statusLim:"Cupo Limitado", statusOff:"Sin Cupo",
+    noPrice:"Consultar precio",
+    btnOrder:"Pedir", btnConsult:"⚠️ Consultar", btnNotify:"🔔 Avisar cuando haya",
+    modalLim:"Este tour tiene <strong>cupos limitados</strong>. Te recomendamos consultar antes de reservar.",
+    modalOff:"Este tour está <strong>sin cupo</strong> actualmente. Podés pedirnos que te avisemos cuando haya disponibilidad.",
+    modalBtnOrder:"📱 Pedir por WhatsApp", modalBtnConsult:"⚠️ Consultar Disponibilidad", modalBtnNotify:"🔔 Avisar cuando haya",
+    modalNoPrice:"Consultá el precio",
+    ctWa:"WhatsApp", ctEmail:"Correo", ctLoc:"Ubicación", ctSched:"Horario",
+    sendWa:"📱 Enviar por WhatsApp", sendEmail:"✉️ Enviar por Correo",
+    waMsg:(biz,name)=>`¡Hola ${biz}! Me interesa el tour *${name}*. ¿Podría darme información sobre precio y disponibilidad?`,
+    waMsgLim:(biz,name)=>`¡Hola ${biz}! Me interesa el tour *${name}* (cupos limitados). ¿Hay disponibilidad próximamente?`,
+    waMsgOff:(biz,name)=>`¡Hola ${biz}! Me gustaría que me avisaran cuando haya disponibilidad para el tour *${name}*.`,
+    waMsgPkg:(biz)=>`¡Hola ${biz}! Me gustaría información sobre los paquetes de tours disponibles.`,
+    waMsgTransfer:(biz)=>`¡Hola ${biz}! Me gustaría información sobre el servicio de traslados privados. ¿Podría indicarme destinos disponibles y precios?`,
+  },
+  en: {
+    statusAvail:"Available", statusLim:"Limited Spots", statusOff:"Sold Out",
+    noPrice:"Ask for price",
+    btnOrder:"Book", btnConsult:"⚠️ Check Availability", btnNotify:"🔔 Notify me",
+    modalLim:"This tour has <strong>limited availability</strong>. We recommend checking before booking.",
+    modalOff:"This tour is currently <strong>unavailable</strong>. You can ask us to notify you when spots open.",
+    modalBtnOrder:"📱 Book via WhatsApp", modalBtnConsult:"⚠️ Check Availability", modalBtnNotify:"🔔 Notify me",
+    modalNoPrice:"Ask for price",
+    ctWa:"WhatsApp", ctEmail:"Email", ctLoc:"Location", ctSched:"Schedule",
+    sendWa:"📱 Send via WhatsApp", sendEmail:"✉️ Send via Email",
+    waMsg:(biz,name)=>`Hi ${biz}! I'm interested in the *${name}* tour. Could you give me information about price and availability?`,
+    waMsgLim:(biz,name)=>`Hi ${biz}! I'm interested in the *${name}* tour (limited spots). Is there availability soon?`,
+    waMsgOff:(biz,name)=>`Hi ${biz}! I'd like to be notified when the *${name}* tour has availability again.`,
+    waMsgPkg:(biz)=>`Hi ${biz}! I'd like information about the available tour packages.`,
+    waMsgTransfer:(biz)=>`Hi ${biz}! I'd like information about your private transfer service. Could you share available destinations and prices?`,
+  }
+};
+const U = () => UI_STRINGS[currentLang] || UI_STRINGS.es;
 const DAYS_ES={mon:"Lunes",tue:"Martes",wed:"Miércoles",thu:"Jueves",fri:"Viernes",sat:"Sábado",sun:"Domingo"};
+const DAYS = () => currentLang === 'en' ? DAYS_EN : DAYS_ES;
 const CATS=["Aventura","Naturaleza","Cultural","Playa","Senderismo","Fotografía","Familiar","Nocturno","Otra"];
 const CATS_STD=CATS.slice(0,-1);
 
@@ -1388,15 +1779,15 @@ function catEmoji(cat){const map={"Aventura":"🏔️","Naturaleza":"🌿","Cult
 
 function productCard(p,showEmoji){
   const bCls=p.status==="available"?"b-on":p.status==="limited"?"b-lim":"b-off";
-  const bTxt=p.status==="available"?"Disponible":p.status==="limited"?"Cupo Limitado":"Sin Cupo";
-  const priceHtml=p.price?`<span class="p-price">${p.price}</span>`:`<span style="font-size:.76rem;color:var(--text-l);font-family:'Lato',sans-serif">Consultar precio</span>`;
+  const bTxt=p.status==="available"?U().statusAvail:p.status==="limited"?U().statusLim:U().statusOff;
+  const priceHtml=p.price?`<span class="p-price">${p.price}</span>`:`<span style="font-size:.76rem;color:var(--text-l);font-family:'Lato',sans-serif">${U().noPrice}</span>`;
   let btnHtml;
   if(p.status==="available"){
-    btnHtml=`<button class="btn-order avail" onclick="event.stopPropagation();orderProduct('${encodeURIComponent(p.name)}')"><svg viewBox="0 0 24 24" fill="white" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Pedir</button>`;
+    btnHtml=`<button class="btn-order avail" onclick="event.stopPropagation();orderProduct('${encodeURIComponent(p.name)}')"><svg viewBox="0 0 24 24" fill="white" width="13" height="13"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> ${U().btnOrder}</button>`;
   } else if(p.status==="limited"){
-    btnHtml=`<button class="btn-order lim" onclick="event.stopPropagation();orderProductLimited('${encodeURIComponent(p.name)}')">⚠️ Consultar</button>`;
+    btnHtml=`<button class="btn-order lim" onclick="event.stopPropagation();orderProductLimited('${encodeURIComponent(p.name)}')">${U().btnConsult}</button>`;
   } else {
-    btnHtml=`<button class="btn-order off" onclick="event.stopPropagation();orderProductUnavail('${encodeURIComponent(p.name)}')">🔔 Avisar cuando haya</button>`;
+    btnHtml=`<button class="btn-order off" onclick="event.stopPropagation();orderProductUnavail('${encodeURIComponent(p.name)}')">${U().btnNotify}</button>`;
   }
   return `<div class="p-card" onclick="openProductModal(${p.id})">
     <div class="p-img">
@@ -1462,13 +1853,13 @@ function formatSchedule(sched){
   });
   if(groups.length===1&&groups[0].days.length===open.length){
     // All open days have same hours
-    const dayNames=groups[0].days.map(k=>DAYS_ES[k].substring(0,3));
+    const dayNames=groups[0].days.map(k=>DAYS()[k].substring(0,3));
     const dayStr=dayNames.length>2?`${dayNames[0]}–${dayNames[dayNames.length-1]}`:`${dayNames.join(", ")}`;
     return `${dayStr} · ${groups[0].slot}`;
   }
   // Multiple groups — show each
   return groups.map(g=>{
-    const dn=g.days.map(k=>DAYS_ES[k].substring(0,3));
+    const dn=g.days.map(k=>DAYS()[k].substring(0,3));
     const ds=dn.length>2?`${dn[0]}–${dn[dn.length-1]}`:`${dn.join(", ")}`;
     return `${ds} ${g.slot}`;
   }).join("  ·  ");
@@ -1479,10 +1870,10 @@ function renderContact(){
   const wa=c.whatsapp||"50600000000";
   const schedTxt=formatSchedule(c.schedule);
   const items=[
-    {href:`https://wa.me/${wa}`,cls:"wa",newTab:true,ico:"📱",strong:"WhatsApp",span:c.waDisplay||wa},
-    c.email?{href:`mailto:${c.email}`,cls:"em",newTab:false,ico:"✉️",strong:"Correo",span:c.email}:null,
-    c.location?{href:c.locationUrl||null,cls:"lo",newTab:true,ico:"📍",strong:"Ubicación",span:c.location}:null,
-    schedTxt?{href:null,cls:"cl",ico:"🕐",strong:"Horario",span:schedTxt}:null
+    {href:`https://wa.me/${wa}`,cls:"wa",newTab:true,ico:"📱",strong:U().ctWa,span:c.waDisplay||wa},
+    c.email?{href:`mailto:${c.email}`,cls:"em",newTab:false,ico:"✉️",strong:U().ctEmail,span:c.email}:null,
+    c.location?{href:c.locationUrl||null,cls:"lo",newTab:true,ico:"📍",strong:U().ctLoc,span:c.location}:null,
+    schedTxt?{href:null,cls:"cl",ico:"🕐",strong:U().ctSched,span:schedTxt}:null
   ].filter(Boolean);
   document.getElementById("contactInfo").innerHTML=items.map(i=>{
     const isLink=!!i.href;
@@ -1522,16 +1913,16 @@ function openProductModal(id){
   if(!p)return;
   const showEmoji=D.business.showProdEmoji!==false;
   const unavailMsg=p.status==="limited"
-    ?`<div class="prod-modal-unavail">⚠️ <span>Este tour tiene <strong>cupos limitados</strong>. Te recomendamos consultar antes de reservar.</span></div>`
+    ?`<div class="prod-modal-unavail">⚠️ <span>${U().modalLim}</span></div>`
     :p.status==="unavailable"
-    ?`<div class="prod-modal-unavail" style="background:#F8D7DA;color:#721C24">❌ <span>Este tour está <strong>sin cupo</strong> actualmente. Podés pedirnos que te avisemos cuando haya disponibilidad.</span></div>`:"";
+    ?`<div class="prod-modal-unavail" style="background:#F8D7DA;color:#721C24">❌ <span>${U().modalOff}</span></div>`:"";
   let btnHtml;
   if(p.status==="available"){
-    btnHtml=`<button class="btn-pr" onclick="orderProduct('${encodeURIComponent(p.name)}');closeProdModal()">📱 Pedir por WhatsApp</button>`;
+    btnHtml=`<button class="btn-pr" onclick="orderProduct('${encodeURIComponent(p.name)}');closeProdModal()">${U().modalBtnOrder}</button>`;
   }else if(p.status==="limited"){
-    btnHtml=`<button class="btn-pr" style="background:#856404" onclick="orderProductLimited('${encodeURIComponent(p.name)}');closeProdModal()">⚠️ Consultar Disponibilidad</button>`;
+    btnHtml=`<button class="btn-pr" style="background:#856404" onclick="orderProductLimited('${encodeURIComponent(p.name)}');closeProdModal()">${U().modalBtnConsult}</button>`;
   }else{
-    btnHtml=`<button class="btn-pr" style="background:#6c757d" onclick="orderProductUnavail('${encodeURIComponent(p.name)}');closeProdModal()">🔔 Avisar cuando haya</button>`;
+    btnHtml=`<button class="btn-pr" style="background:#6c757d" onclick="orderProductUnavail('${encodeURIComponent(p.name)}');closeProdModal()">${U().modalBtnNotify}</button>`;
   }
   document.getElementById("prodModalContent").innerHTML=`
     ${p.img?`<img class="prod-modal-img" src="${p.img}" alt="${p.name}">`:`<div class="prod-modal-img-ph">${showEmoji?(p.emoji||"🍽"):"🍽"}</div>`}
@@ -1541,7 +1932,7 @@ function openProductModal(id){
       ${unavailMsg}
       <div class="prod-modal-desc">${p.desc}</div>
       <div class="prod-modal-foot">
-        ${p.price?`<span class="prod-modal-price">${p.price}</span>`:`<span style="font-family:'Lato',sans-serif;color:var(--text-l)">Consultá el precio</span>`}
+        ${p.price?`<span class="prod-modal-price">${p.price}</span>`:`<span style="font-family:'Lato',sans-serif;color:var(--text-l)">${U().modalNoPrice}</span>`}
         ${btnHtml}
       </div>
     </div>`;
@@ -1572,7 +1963,7 @@ function orderProduct(nameEnc){
   const name=decodeURIComponent(nameEnc);
   if(!D.contact.whatsapp){showNotif("⚠️ WhatsApp no configurado aún");return;}
   lastProduct=name;
-  const msg=`¡Hola ${_bizName()}! Me interesa el tour *${name}*. ¿Podría darme información sobre precio y disponibilidad?`;
+  const msg=U().waMsg(_bizName(),name);
   window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
   const cb=document.querySelector(`#fProductPicker .f-pick-cb[data-name="${name}"]`);
   if(cb&&!cb.checked){cb.checked=true;togglePickItem(cb);}
@@ -1581,27 +1972,24 @@ function orderProductLimited(nameEnc){
   const name=decodeURIComponent(nameEnc);
   if(!D.contact.whatsapp){showNotif("⚠️ WhatsApp no configurado aún");return;}
   lastProduct=name;
-  const msg=`¡Hola ${_bizName()}! Me interesa el tour *${name}* pero vi que tiene disponibilidad limitada. ¿Todavía hay cupo?`;
+  const msg=U().waMsgLim(_bizName(),name);
   window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
 }
 function orderProductUnavail(nameEnc){
   const name=decodeURIComponent(nameEnc);
   if(!D.contact.whatsapp){showNotif("⚠️ WhatsApp no configurado aún");return;}
-  const msg=`¡Hola ${_bizName()}! Vi que el tour *${name}* está lleno. ¿Pueden avisarme cuando haya cupo?`;
+  const msg=U().waMsgOff(_bizName(),name);
   window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
 }
 function openWhatsApp(type){
   if(!D.contact.whatsapp){showNotif("⚠️ WhatsApp no configurado aún");return false;}
-  let msg=`¡Hola ${_bizName()}! Me gustaría reservar un tour.`;
-  if(type==="paquetes")msg=`¡Hola ${_bizName()}! Me gustaría consultar sobre los paquetes de aventura.`;
+  const msg=type==="paquetes"?U().waMsgPkg(_bizName()):type==="traslados"?U().waMsgTransfer(_bizName()):U().waMsg(_bizName(),"tour");
   window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
   return false;
 }
 function openWhatsAppFloat(){
   if(!D.contact.whatsapp){showNotif("⚠️ WhatsApp no configurado aún");return false;}
-  const msg=lastProduct
-    ?`¡Hola ${_bizName()}! Quiero saber más sobre el tour: *${lastProduct}*.`
-    :`¡Hola ${_bizName()}! Me gustaría reservar un tour.`;
+  const msg=lastProduct?U().waMsg(_bizName(),lastProduct):U().waMsgPkg(_bizName());
   window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(msg)}`,"_blank");
   return false;
 }
@@ -1611,7 +1999,7 @@ function setContactMethod(m){
   contactMethod=m;
   document.getElementById("csmWa").classList.toggle("act",m==="wa");
   document.getElementById("csmEmail").classList.toggle("act",m==="email");
-  document.getElementById("fSendBtn").textContent=m==="wa"?"📱 Enviar por WhatsApp":"✉️ Enviar por Correo";
+  document.getElementById("fSendBtn").textContent=m==="wa"?U().sendWa:U().sendEmail;
   // Phone only makes sense for email (WA identifies sender automatically)
   document.getElementById("fPhoneGrp").style.display=m==="email"?"block":"none";
   // Update placeholder hint
@@ -1886,7 +2274,7 @@ function addStat(){D.business.stats.push({num:"",lbl:""});renderAdminStats()}
 
 function renderAdminSchedule(){
   const sched=D.contact.schedule||{};
-  document.getElementById("schedGrid").innerHTML=Object.entries(DAYS_ES).map(([k,label])=>{
+  document.getElementById("schedGrid").innerHTML=Object.entries(DAYS()).map(([k,label])=>{
     const d=sched[k]||{open:false,from:"08:00",to:"18:00"};
     return `<div class="sched-day ${d.open?"active":""}" id="sched-${k}">
       <div class="sched-day-hd">
@@ -2095,7 +2483,7 @@ function saveAdmin(){
   if(w3fKey)localStorage.setItem("cl_w3f",w3fKey);
   // Schedule
   c.schedule={};
-  Object.keys(DAYS_ES).forEach(k=>{
+  Object.keys(DAYS()).forEach(k=>{
     c.schedule[k]={
       open:document.getElementById(`sched-open-${k}`)?.checked||false,
       from:document.getElementById(`sched-from-${k}`)?.value||"08:00",
@@ -3114,7 +3502,9 @@ function resetToDefault(){
 
 // ── Init ──
 document.addEventListener("DOMContentLoaded",async()=>{
+  D_ORIGINAL = JSON.parse(JSON.stringify(D));
   renderAll();
+  setLang(currentLang);
   setTimeout(initReveal,100);
   // Only try to fetch if not file:// (GitHub Pages or server)
   if(location.protocol==="file:")return;
@@ -3123,7 +3513,10 @@ document.addEventListener("DOMContentLoaded",async()=>{
     const isNew=JSON.stringify(fresh)!==JSON.stringify(D);
     if(isNew){
       D=fresh;
-      renderAll();
+      D_ORIGINAL=JSON.parse(JSON.stringify(D));
+      // Clear old translation cache so it re-translates with new content
+      Object.keys(localStorage).filter(k=>k.startsWith('jaEN_')).forEach(k=>localStorage.removeItem(k));
+      await setLang(currentLang);
       initReveal();
     }
   }catch{/* stay with local data — offline or error */}
