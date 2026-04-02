@@ -48,43 +48,43 @@
     "whatsapp": "50672967007",
     "waDisplay": "7296-7007",
     "email": "jeffadventurescr@gmail.com",
-    "location": "San José, Costa Rica",
+    "location": "Alajuela, Costa Rica",
     "locationUrl": "",
     "schedule": {
       "mon": {
         "open": true,
-        "from": "07:00",
-        "to": "18:00"
+        "from": "08:00",
+        "to": "22:00"
       },
       "tue": {
         "open": true,
-        "from": "07:00",
-        "to": "18:00"
+        "from": "08:00",
+        "to": "22:00"
       },
       "wed": {
         "open": true,
-        "from": "07:00",
-        "to": "18:00"
+        "from": "08:00",
+        "to": "22:00"
       },
       "thu": {
         "open": true,
-        "from": "07:00",
-        "to": "18:00"
+        "from": "08:00",
+        "to": "22:00"
       },
       "fri": {
         "open": true,
-        "from": "07:00",
-        "to": "18:00"
+        "from": "08:00",
+        "to": "22:00"
       },
       "sat": {
         "open": true,
-        "from": "07:00",
-        "to": "18:00"
+        "from": "08:00",
+        "to": "22:00"
       },
       "sun": {
         "open": true,
-        "from": "07:00",
-        "to": "14:00"
+        "from": "08:00",
+        "to": "22:00"
       }
     }
   },
