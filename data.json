@@ -244,7 +244,13 @@
       "detail": "4 noches · Experiencias privadas · Ultra romántico"
     }
   ],
-  "gallery": [],
+  "gallery": [
+    {
+      "id": 1775147201878,
+      "emoji": "📸",
+      "img": "https://i.imgur.com/m97URKh.jpeg"
+    }
+  ],
   "videos": [
     {
       "id": 1775100280444,
