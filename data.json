@@ -181,13 +181,13 @@
     },
     {
       "id": 1775097505325,
-      "name": "Nuevo Tour",
-      "cat": "Aventura",
-      "desc": "Descripción del tour.",
+      "name": "Tour Puerto Viejo",
+      "cat": "Naturaleza",
+      "desc": "Puerto Viejo es uno de los destinos más atractivos del Caribe costarricense, reconocido por sus playas paradisíacas, ambiente relajado y riqueza cultural. Entre los tours más populares destacan visitas a Punta Uva, Playa Cocles y al Parque Nacional Cahuita, ideales para disfrutar de caminatas, snorkel, avistamiento de fauna y contacto con la naturaleza.\n\nSu gastronomía afrocaribeña se caracteriza por el uso del coco, ingrediente esencial en platillos tradicionales como el rice and beans y el rondón, que combinan leche de coco, especias y productos frescos del mar, ofreciendo sabores únicos que representan la identidad culinaria del Caribe costarricense",
       "price": "",
       "status": "available",
       "emoji": "🗺️",
-      "img": ""
+      "img": "https://i.imgur.com/eS7pNaG.jpeg"
     }
   ],
   "packages": [
