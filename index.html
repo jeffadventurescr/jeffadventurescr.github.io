@@ -1747,20 +1747,22 @@ function renderProducts(){
       </div>
     </div>
   `).join("");
-  // Populate multi-product picker
+  // Populate multi-product picker (use display version if translated)
   const picker=document.getElementById("fProductPicker");
   if(picker){
-    if(!D.products.length){
+    const pickerProds = (D_view||D).products;
+    if(!pickerProds.length){
       picker.innerHTML=`<div style="padding:12px;font-family:'Lato',sans-serif;font-size:.84rem;color:var(--text-l);text-align:center">Aún no hay productos disponibles</div>`;
     }else{
-      picker.innerHTML=D.products.map(p=>{
+      picker.innerHTML=pickerProds.map(p=>{
       const isOff=p.status==="unavailable";
       const statusBadge=p.status==="limited"
-        ?`<span class="f-pick-status" style="background:#FFF3CD;color:#856404">Limitado</span>`
+        ?`<span class="f-pick-status" style="background:#FFF3CD;color:#856404">${U().statusLim}</span>`
         :p.status==="unavailable"
-        ?`<span class="f-pick-status" style="background:#F8D7DA;color:#721C24">Agotado</span>`:"";
+        ?`<span class="f-pick-status" style="background:#F8D7DA;color:#721C24">${U().statusOff}</span>`:"";
+      const safeName=p.name.replace(/"/g,'&quot;');
       return `<label class="f-pick-item${isOff?" off":""}" id="fpick-${p.id}">
-        <input type="checkbox" class="f-pick-cb" value="${p.id}" data-name="${p.name}" ${isOff?"disabled":""} onchange="togglePickItem(this)">
+        <input type="checkbox" class="f-pick-cb" value="${p.id}" data-name="${safeName}" ${isOff?"disabled":""} onchange="togglePickItem(this)">
         <span class="f-pick-name">${p.emoji&&D.business.showProdEmoji!==false?p.emoji+" ":""} ${p.name}</span>
         ${p.price?`<span class="f-pick-price">${p.price}</span>`:""}
         ${statusBadge}
@@ -1909,7 +1911,10 @@ function renderFooter(){
 //  PRODUCT MODAL
 // ═══════════════════════════════════════════════════
 function openProductModal(id){
-  const p=(D_view||D).products.find(x=>x.id==id);
+  // Try translated view first, then fall back to Spanish D or D_ORIGINAL
+  const pDisplay = D_view?.products?.find(x=>x.id==id);
+  const pFallback = D.products.find(x=>x.id==id) || D_ORIGINAL?.products?.find(x=>x.id==id);
+  const p = pDisplay || pFallback;
   if(!p)return;
   const showEmoji=D.business.showProdEmoji!==false;
   const unavailMsg=p.status==="limited"
