@@ -206,7 +206,7 @@
       "name": "Pura Vida Clásico",
       "ico": "🌿",
       "desc": "3 días de aventura con lo mejor de Costa Rica: Arenal con aguas termales, Monteverde entre las nubes y Manuel Antonio en el Pacífico. El recorrido ideal para primera visita al país.",
-      "price": "Desde $220/persona",
+      "price": "Consultar precio",
       "detail": "3 días · Transporte incluido · Almuerzo día 1"
     },
     {
@@ -214,7 +214,7 @@
       "name": "Naturaleza Extrema",
       "ico": "🏔️",
       "desc": "Para los amantes de la adrenalina: rafting en el Pacuare, senderismo en Corcovado —el parque más biodiverso del planeta— y canopy extremo en Monteverde. Costa Rica sin filtros.",
-      "price": "Desde $310/persona",
+      "price": "Consultar precio",
       "detail": "4 días · Alta adrenalina · Para aventureros"
     },
     {
@@ -222,7 +222,7 @@
       "name": "Costa Rica Familiar",
       "ico": "👨‍👩‍👧",
       "desc": "Tours diseñados para familias con niños: poco caminata, mucha diversión. Volcán Poás, finca de animales, playas seguras del Caribe y zipline suave. Recuerdos para toda la vida.",
-      "price": "Consultar",
+      "price": "Consultar precio",
       "detail": "Grupos familiares · A tu ritmo · Niños bienvenidos"
     },
     {
@@ -230,7 +230,7 @@
       "name": "Luna de Miel CR",
       "ico": "💑",
       "desc": "Paquete romántico especial para parejas: cena privada en Arenal, glamping en el bosque nuboso, spa en aguas termales y atardecer en playa exclusiva del Pacífico Sur. Inolvidable.",
-      "price": "Desde $480/pareja",
+      "price": "Consultar precio",
       "detail": "4 noches · Experiencias privadas · Ultra romántico"
     }
   ],
