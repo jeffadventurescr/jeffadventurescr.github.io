@@ -168,6 +168,26 @@
       "status": "available",
       "emoji": "🌅",
       "img": "https://i.imgur.com/UrCyIaw.jpeg"
+    },
+    {
+      "id": 1775097442994,
+      "name": "Tour a Isla Tortuga",
+      "cat": "Aventura",
+      "desc": "El tour a Isla Tortuga es una de las experiencias de un día más populares de Costa Rica, destacada por sus playas de arena blanca, aguas turquesas y una variada oferta de actividades acuáticas en el Golfo de Nicoya.\nLa salida se realiza desde una marina privada, donde durante el trayecto en bote se disfrutan comidas, bebidas y el avistamiento de delfines, aves marinas y otras especies de fauna.\nEn la isla se pueden realizar actividades acuáticas, además de visitar playas vírgenes y el Arco de Piedra en mar adentro.\nAl ser una reserva forestal deshabitada, la isla se mantiene en un estado natural privilegiado, donde únicamente residen guardaparques.\nDe regreso, también se visitan Isla Chiquita, Cedros y Jesucita.",
+      "price": "",
+      "status": "available",
+      "emoji": "🗺️",
+      "img": "https://i.imgur.com/Ox9HkNr.jpeg"
+    },
+    {
+      "id": 1775097505325,
+      "name": "Nuevo Tour",
+      "cat": "Aventura",
+      "desc": "Descripción del tour.",
+      "price": "",
+      "status": "available",
+      "emoji": "🗺️",
+      "img": ""
     }
   ],
   "packages": [
