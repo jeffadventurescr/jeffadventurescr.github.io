@@ -4,13 +4,13 @@
     "tagline": "Más que un tour, una experiencia",
     "heroTitle": "Aventuras que transforman",
     "heroSub": "Tours privados y grupales por la Costa Rica auténtica. Naturaleza, aventura y cultura con Jeff como guía.",
-    "heroImg": "",
+    "heroImg": "https://i.imgur.com/6mJoTjm.jpeg",
     "logoImg": "https://i.imgur.com/6mJoTjm.jpeg",
     "showNavIcon": true,
     "showProdEmoji": true,
     "aboutTitle": "Jeff, tu guía de aventuras",
     "aboutText": "Soy Jeff, guía turístico certificado por el ICT con más de 10 años explorando Costa Rica. Mi pasión es mostrarte los rincones más auténticos del país, desde volcanes y bosques nubosos hasta playas vírgenes y comunidades indígenas. Cada tour es personalizado según tus intereses y ritmo. ¡Pura Vida!",
-    "aboutImg": "https://i.imgur.com/6mJoTjm.jpeg",
+    "aboutImg": "",
     "statsAuto": false,
     "stats": [
       {
