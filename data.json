@@ -91,13 +91,13 @@
   "products": [
     {
       "id": 1,
-      "name": "Tour Volcán Arenal",
+      "name": "Tour La Fortuna&Aguas Termales",
       "cat": "Aventura",
-      "desc": "Día completo en La Fortuna: visita al majestuoso Volcán Arenal, aguas termales naturales y la impresionante Cascada La Fortuna. Almuerzo típico incluido. Salida 6am desde San José.",
-      "price": "$85 por persona",
+      "desc": "Los tours a La Fortuna pueden incluir: visita al majestuoso Volcán Arenal, avistamiento de vida salva, ATV, monta de caballo, aguas termales naturales y la impresionante Cascada La Fortuna. Almuerzo típico incluido. Tiempo flexible.",
+      "price": "",
       "status": "available",
       "emoji": "🌋",
-      "img": ""
+      "img": "https://i.imgur.com/snTlOaT.jpeg"
     },
     {
       "id": 2,
