@@ -188,6 +188,16 @@
       "status": "available",
       "emoji": "🗺️",
       "img": "https://i.imgur.com/eS7pNaG.jpeg"
+    },
+    {
+      "id": 1775098519810,
+      "name": "Tour Bahía Ballena",
+      "cat": "Aventura",
+      "desc": "Bahía Ballena es uno de los destinos más visitados del Pacífico Sur de Costa Rica 🌊🐋, famoso por su formación natural en forma de cola de ballena dentro del Parque Nacional Marino Ballena. Los tours permiten disfrutar de caminatas por la playa, avistamiento de ballenas y delfines en temporada, paseos en bote y snorkel en aguas cristalinas.\n\nAdemás, es un lugar ideal para relajarse, observar atardeceres y conectarse con la naturaleza, rodeado de abundante biodiversidad marina y paisajes tropicales.",
+      "price": "",
+      "status": "available",
+      "emoji": "🗺️",
+      "img": "https://i.imgur.com/uBXxqy5.jpeg"
     }
   ],
   "packages": [
