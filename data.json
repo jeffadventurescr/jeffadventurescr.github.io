@@ -1,20 +1,20 @@
 {
   "business": {
     "name": "Jeff Adventures CR",
-    "tagline": "Más que un tour es una experiencia !! ",
-    "heroTitle": "Más que un tour es una experiencia !! ",
+    "tagline": "Más que un tour es una experiencia",
+    "heroTitle": "Más que un tour es una experiencia",
     "heroSub": "Tours privados y grupales por la Costa Rica auténtica. Naturaleza, aventura y cultura con Jeff como guía.",
     "heroImg": "https://i.imgur.com/6mJoTjm.jpeg",
     "logoImg": "https://i.imgur.com/6mJoTjm.jpeg",
     "showNavIcon": true,
     "showProdEmoji": true,
     "aboutTitle": "Jeff, tu guía de aventuras",
-    "aboutText": "Soy Jeff, guía turístico certificado por el ICT con más de 10 años explorando Costa Rica. Mi pasión es mostrarte los rincones más auténticos del país, desde volcanes y bosques nubosos hasta playas vírgenes y comunidades indígenas. Cada tour es personalizado según tus intereses y ritmo. ¡Pura Vida!",
+    "aboutText": "Soy Jeff, guía turístico con más de 15 años explorando Costa Rica y compartiendo su riqueza natural con viajeros de todo el mundo. Mi especialidad es el turismo de aventura y ecológico, llevándote a descubrir los rincones más auténticos del país: volcanes, bosques nubosos, cataratas, playas vírgenes y comunidades locales. Cada experiencia se diseña de forma personalizada, con trato cercano, atención individual y total flexibilidad en horarios para adaptarnos a tus intereses, tu ritmo y el tiempo disponible. Además, ofrezco traslado desde el aeropuerto hacia los principales destinos turísticos, brindándote comodidad, seguridad y una experiencia completa desde tu llegada. ¡Pura Vida!",
     "aboutImg": "",
     "statsAuto": false,
     "stats": [
       {
-        "num": "10+",
+        "num": "15+",
         "lbl": "Años de experiencia"
       },
       {
