@@ -134,10 +134,10 @@
       "name": "Tour Rafting Pacuare",
       "cat": "Aventura",
       "desc": "El río Pacuare es considerado uno de los 10 mejores ríos para rafting del mundo. Rápidos clase III y IV entre selva tropical virgen. Equipo completo y guías expertos. Adrenalina pura.",
-      "price": "$95 por persona",
+      "price": "",
       "status": "available",
       "emoji": "🚣",
-      "img": ""
+      "img": "https://i.imgur.com/taTz5BN.jpeg"
     },
     {
       "id": 6,
