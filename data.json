@@ -160,26 +160,6 @@
       "img": "https://i.imgur.com/xtdBzN4.jpeg"
     },
     {
-      "id": 9,
-      "name": "Tour Nocturno Selva",
-      "cat": "Nocturno",
-      "desc": "La selva cobra vida de noche. Ranas venenosas, serpientes, insectos bioluminiscentes y el canto de los grillos. Con guía experto y linternas especiales para descubrir el mundo nocturno de Costa Rica.",
-      "price": "$55 por persona",
-      "status": "available",
-      "emoji": "🌙",
-      "img": ""
-    },
-    {
-      "id": 10,
-      "name": "Tour Familiar Poas",
-      "cat": "Familiar",
-      "desc": "Perfecto para familias: Volcán Poás activo con cráter espectacular, plantaciones de fresas y el hermoso Lago de la Paz con su cascada. Poco caminata, mucho impacto. Apto para todas las edades.",
-      "price": "$60 por persona",
-      "status": "available",
-      "emoji": "👨‍👩‍👧",
-      "img": ""
-    },
-    {
       "id": 1775094968477,
       "name": "Tour Playa Tamarindo",
       "cat": "Aventura",
