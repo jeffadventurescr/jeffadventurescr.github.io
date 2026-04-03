@@ -244,7 +244,8 @@
       "detail": "4 noches · Experiencias privadas · Ultra romántico"
     }
   ],
-  "gallery": [    {
+  "gallery": [
+    {
       "id": 1775147201878,
       "emoji": "📸",
       "img": "https://i.imgur.com/m97URKh.jpeg"
@@ -328,62 +329,6 @@
       "id": 1775148105941,
       "emoji": "📸",
       "img": "https://i.imgur.com/M6vnsTS.png"
-    }
-  ],
-  "reviews": [
-    {
-      "id": 1001,
-      "name": "Sarah & Mike Johnson",
-      "stars": 5,
-      "tour": "Tour La Fortuna&Aguas Termales",
-      "comment": "Jeff made our Costa Rica trip absolutely unforgettable! The Arenal volcano hike was breathtaking and the hot springs afterward were pure paradise. He speaks perfect English, knew every trail, and made us feel totally safe the whole time. Highly recommend!",
-      "date": "2026-03-18",
-      "status": "approved"
-    },
-    {
-      "id": 1002,
-      "name": "Carlos Méndez",
-      "stars": 5,
-      "tour": "Tour Monteverde",
-      "comment": "Una experiencia increíble. Jeff conoce el bosque nuboso como la palma de su mano. Vimos quetzales, tucanes y hasta un perezoso. Los puentes colgantes entre las nubes son algo que nunca voy a olvidar. 100% recomendado.",
-      "date": "2026-03-05",
-      "status": "approved"
-    },
-    {
-      "id": 1003,
-      "name": "Emma Dubois",
-      "stars": 5,
-      "tour": "Tour Manuel Antonio",
-      "comment": "Le tour à Manuel Antonio était fantastique! Jeff est un guide exceptionnel, très professionnel et passionné. Les singes et les paresseux étaient à portée de main. La plage était magnifique. Je recommande vivement!",
-      "date": "2026-02-22",
-      "status": "approved"
-    },
-    {
-      "id": 1004,
-      "name": "Roberto y Ana García",
-      "stars": 5,
-      "tour": "Tour Rafting Pacuare",
-      "comment": "¡Adrenalina pura! Jeff coordinó todo perfecto, el equipo era de primera y los guías en el río súper profesionales. El Pacuare es una maravilla natural, selva virgen a ambos lados. Fue el mejor día de nuestro viaje a Costa Rica.",
-      "date": "2026-02-10",
-      "status": "approved"
-    },
-    {
-      "id": 1005,
-      "name": "Thomas Müller",
-      "stars": 5,
-      "tour": "Tour a Isla Tortuga",
-      "comment": "Absolutely stunning! The boat ride to Isla Tortuga was already amazing — we spotted dolphins along the way. The island itself has crystal clear water, white sand and the snorkeling was fantastic. Jeff organized everything perfectly. A dream day!",
-      "date": "2026-01-30",
-      "status": "approved"
-    },
-    {
-      "id": 1006,
-      "name": "Lucía Fernández",
-      "stars": 5,
-      "tour": "Avistamiento de Tortugas",
-      "comment": "Ver las tortugas desovar fue algo mágico y muy emotivo. Jeff explicó todo con mucho respeto por la naturaleza y los animales. Fue una noche especial que no tiene precio. Si van a Costa Rica, este tour es obligatorio.",
-      "date": "2026-01-15",
-      "status": "approved"
     }
   ],
   "videos": [
