@@ -102,7 +102,7 @@
     {
       "id": 2,
       "name": "Tour Monteverde",
-      "cat": "Naturaleza",
+      "cat": "Aventura",
       "desc": "Explora el misterioso Bosque Nuboso de Monteverde. Caminata por puentes colgantes entre las nubes, canopy opcional y avistamiento de quetzales y tucanes. Visita a Selvatura Adventure Park o Treetopia Park. Tour a fincas de cacao, café, caña de azúcar y avistamiento de vida silvestre nocturna. Una biodiversidad que te dejará sin palabras.",
       "price": "",
       "status": "available",
@@ -172,7 +172,7 @@
     {
       "id": 1775097505325,
       "name": "Tour Puerto Viejo",
-      "cat": "Naturaleza",
+      "cat": "Aventura",
       "desc": "Puerto Viejo es uno de los destinos más atractivos del Caribe costarricense, reconocido por sus playas paradisíacas, ambiente relajado y riqueza cultural. Entre los tours más populares destacan visitas a Punta Uva, Playa Cocles y al Parque Nacional Cahuita, ideales para disfrutar de caminatas, snorkel, avistamiento de fauna y contacto con la naturaleza.\n\nSu gastronomía afrocaribeña se caracteriza por el uso del coco, ingrediente esencial en platillos tradicionales como el rice and beans y el rondón, que combinan leche de coco, especias y productos frescos del mar, ofreciendo sabores únicos que representan la identidad culinaria del Caribe costarricense",
       "price": "",
       "status": "available",
