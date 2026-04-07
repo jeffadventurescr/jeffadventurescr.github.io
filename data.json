@@ -112,7 +112,7 @@
     {
       "id": 3,
       "name": "Tour Manuel Antonio",
-      "cat": "Playa",
+      "cat": "Aventura",
       "desc": "El parque nacional más visitado de Costa Rica. Monos carablanca, perezosos en los árboles, playas de arena blanca y esnórquel en las aguas cristalinas del Pacífico. Tour de zipline, canopy, paracaidismo y parasailing. Un paraíso completo.",
       "price": "",
       "status": "available",
@@ -162,7 +162,7 @@
     {
       "id": 1775097442994,
       "name": "Tour a Isla Tortuga",
-      "cat": "Aventura",
+      "cat": "Playa",
       "desc": "El tour a Isla Tortuga es una de las experiencias de un día más populares de Costa Rica, destacada por sus playas de arena blanca, aguas turquesas y una variada oferta de actividades acuáticas en el Golfo de Nicoya.\nLa salida se realiza desde una marina privada, donde durante el trayecto en bote se disfrutan comidas, bebidas y el avistamiento de delfines, aves marinas y otras especies de fauna.\nEn la isla se pueden realizar actividades acuáticas, además de visitar playas vírgenes y el Arco de Piedra en mar adentro.\nAl ser una reserva forestal deshabitada, la isla se mantiene en un estado natural privilegiado, donde únicamente residen guardaparques.\nDe regreso, también se visitan Isla Chiquita, Cedros y Jesucita.",
       "price": "",
       "status": "available",
@@ -172,7 +172,7 @@
     {
       "id": 1775097505325,
       "name": "Tour Puerto Viejo",
-      "cat": "Naturaleza",
+      "cat": "Aventura",
       "desc": "Puerto Viejo es uno de los destinos más atractivos del Caribe costarricense, reconocido por sus playas paradisíacas, ambiente relajado y riqueza cultural. Entre los tours más populares destacan visitas a Punta Uva, Playa Cocles y al Parque Nacional Cahuita, ideales para disfrutar de caminatas, snorkel, avistamiento de fauna y contacto con la naturaleza.\n\nSu gastronomía afrocaribeña se caracteriza por el uso del coco, ingrediente esencial en platillos tradicionales como el rice and beans y el rondón, que combinan leche de coco, especias y productos frescos del mar, ofreciendo sabores únicos que representan la identidad culinaria del Caribe costarricense",
       "price": "",
       "status": "available",
