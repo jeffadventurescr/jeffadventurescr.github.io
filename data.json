@@ -102,7 +102,7 @@
     {
       "id": 2,
       "name": "Tour Monteverde",
-      "cat": "Naturaleza",
+      "cat": "Aventura",
       "desc": "Explora el misterioso Bosque Nuboso de Monteverde. Caminata por puentes colgantes entre las nubes, canopy opcional y avistamiento de quetzales y tucanes. Visita a Selvatura Adventure Park o Treetopia Park. Tour a fincas de cacao, café, caña de azúcar y avistamiento de vida silvestre nocturna. Una biodiversidad que te dejará sin palabras.",
       "price": "",
       "status": "available",
@@ -112,7 +112,7 @@
     {
       "id": 3,
       "name": "Tour Manuel Antonio",
-      "cat": "Playa",
+      "cat": "Aventura",
       "desc": "El parque nacional más visitado de Costa Rica. Monos carablanca, perezosos en los árboles, playas de arena blanca y esnórquel en las aguas cristalinas del Pacífico. Tour de zipline, canopy, paracaidismo y parasailing. Un paraíso completo.",
       "price": "",
       "status": "available",
@@ -128,16 +128,6 @@
       "status": "available",
       "emoji": "🏙️",
       "img": "https://i.imgur.com/3egynFF.jpeg"
-    },
-    {
-      "id": 5,
-      "name": "Tour Rafting Pacuare",
-      "cat": "Aventura",
-      "desc": "El río Pacuare es considerado uno de los 10 mejores ríos para rafting del mundo. Rápidos clase III y IV entre selva tropical virgen. Equipo completo y guías expertos. Adrenalina pura.",
-      "price": "",
-      "status": "available",
-      "emoji": "🚣",
-      "img": "https://i.imgur.com/taTz5BN.jpeg"
     },
     {
       "id": 6,
@@ -172,7 +162,7 @@
     {
       "id": 1775097442994,
       "name": "Tour a Isla Tortuga",
-      "cat": "Aventura",
+      "cat": "Playa",
       "desc": "El tour a Isla Tortuga es una de las experiencias de un día más populares de Costa Rica, destacada por sus playas de arena blanca, aguas turquesas y una variada oferta de actividades acuáticas en el Golfo de Nicoya.\nLa salida se realiza desde una marina privada, donde durante el trayecto en bote se disfrutan comidas, bebidas y el avistamiento de delfines, aves marinas y otras especies de fauna.\nEn la isla se pueden realizar actividades acuáticas, además de visitar playas vírgenes y el Arco de Piedra en mar adentro.\nAl ser una reserva forestal deshabitada, la isla se mantiene en un estado natural privilegiado, donde únicamente residen guardaparques.\nDe regreso, también se visitan Isla Chiquita, Cedros y Jesucita.",
       "price": "",
       "status": "available",
@@ -182,7 +172,7 @@
     {
       "id": 1775097505325,
       "name": "Tour Puerto Viejo",
-      "cat": "Naturaleza",
+      "cat": "Aventura",
       "desc": "Puerto Viejo es uno de los destinos más atractivos del Caribe costarricense, reconocido por sus playas paradisíacas, ambiente relajado y riqueza cultural. Entre los tours más populares destacan visitas a Punta Uva, Playa Cocles y al Parque Nacional Cahuita, ideales para disfrutar de caminatas, snorkel, avistamiento de fauna y contacto con la naturaleza.\n\nSu gastronomía afrocaribeña se caracteriza por el uso del coco, ingrediente esencial en platillos tradicionales como el rice and beans y el rondón, que combinan leche de coco, especias y productos frescos del mar, ofreciendo sabores únicos que representan la identidad culinaria del Caribe costarricense",
       "price": "",
       "status": "available",
@@ -208,6 +198,16 @@
       "status": "available",
       "emoji": "🗺️",
       "img": "https://i.imgur.com/gszP1JT.jpeg"
+    },
+    {
+      "id": 1775593631137,
+      "name": "Tour Rafting Pacuare",
+      "cat": "Rafting",
+      "desc": "El río Pacuare es considerado uno de los 10 mejores ríos para rafting del mundo. Rápidos clase III y IV entre selva tropical virgen. Equipo completo y guías expertos. Adrenalina pura.",
+      "price": "",
+      "status": "available",
+      "emoji": "🚣",
+      "img": "https://i.imgur.com/taTz5BN.jpeg"
     }
   ],
   "packages": [
@@ -339,28 +339,10 @@
       "desc": "Campaña en Costa Rica \"Vamos a A Turistear :¿A vos qué te falta sentir por primera vez?\""
     },
     {
-      "id": 1775594398028,
+      "id": 1775595233946,
       "url": "https://www.youtube.com/shorts/g0_4EIELP8U",
-      "title": "El tour a la Catarata La Leona",
-      "desc": "El tour a la Catarata La Leona, ubicada en Curubandé de Liberia (Guanacaste), es una experiencia de aventura que combina senderismo, natación y exploración de cañones."
-    },
-    {
-      "id": 1775594870815,
-      "url": "https://www.youtube.com/shorts/ranh-OatGp0",
-      "title": "El tour a la Catarata La Fortuna",
-      "desc": "Es una de las experiencias naturales más icónicas de Costa Rica. Esta destaca por su impresionante caída vertical de 70 metros que desemboca en una poza de color verde jade rodeada de densa vegetación tropical."
-    },
-    {
-      "id": 1775594976349,
-      "url": "https://www.youtube.com/shorts/J88U7apLBB4",
-      "title": "Tour Islta Tortuga",
-      "desc": "El tour a Isla Tortuga es la escapada clásica al paraíso tropical desde el Pacífico Central y el Golfo de Nicoya. A diferencia de otros tours de naturaleza, este se centra en la relajación total en playas de arena blanca y aguas turquesas, combinada con un ambiente festivo a bordo de cruceros o catamaranes."
-    },
-    {
-      "id": 1775595095791,
-      "url": "https://www.youtube.com/shorts/EGVYTkFX72s",
-      "title": "Tour de Ballenas y delfines",
-      "desc": "El tour de Avistamiento de Ballenas y Delfines es la experiencia reina de la costa pacífica de Costa Rica."
+      "title": "Tour a la Catarata La Leona",
+      "desc": "Es una experiencia de aventura que combina senderismo, natación y exploración de cañones."
     }
   ]
 }
