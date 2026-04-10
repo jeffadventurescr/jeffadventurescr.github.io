@@ -1971,7 +1971,7 @@ function renderReviews(){
   if(!grid)return;
   const reviews=(D.reviews||[]);
   if(!reviews.length){
-    grid.innerHTML=`<p class="res-empty">${U().resEmpty||"Aún no hay reseñas publicadas."}</p>`;
+    grid.innerHTML=`<p class="res-empty">${(LANG_DATA[currentLang]||LANG_DATA.es).resEmpty||"Aún no hay reseñas publicadas."}</p>`;
     return;
   }
   grid.innerHTML=reviews.map(r=>{
