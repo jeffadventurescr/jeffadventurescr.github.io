@@ -764,8 +764,8 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
           <button class="csm-btn" id="csmEmail" onclick="setContactMethod('email')" data-i18n="formEmail">✉️ Correo</button>
         </div>
         <div class="f-row">
-          <div class="f-grp"><label data-i18n="formName">Tu nombre *</label><input type="text" id="fName" data-i18n-ph="formNamePh" placeholder="Tu nombre completo"></div>
-          <div class="f-grp" id="fPhoneGrp" style="display:none"><label data-i18n="formPhone">Teléfono</label><input type="tel" id="fPhone" data-i18n-ph="formPhonePh" placeholder="Ej: 8888-8888"></div>
+          <div class="f-grp"><label data-i18n="formName">Tu nombre *</label><input type="text" id="fName" autocomplete="off" data-i18n-ph="formNamePh" placeholder="Tu nombre completo"></div>
+          <div class="f-grp" id="fPhoneGrp" style="display:none"><label data-i18n="formPhone">Teléfono</label><input type="tel" id="fPhone" autocomplete="off" data-i18n-ph="formPhonePh" placeholder="Ej: 8888-8888"></div>
         </div>
         <div class="f-grp">
           <label><span data-i18n="formTourLabel">¿Qué tour te interesa?</span> <span style="font-size:.74rem;color:var(--text-l);font-weight:400" data-i18n="formTourHint">(o escribí tu consulta abajo)</span></label>
@@ -775,7 +775,7 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
           <p id="fPickerHint" style="display:none;font-size:.75rem;color:#dc3545;margin-top:4px;font-weight:700" data-i18n="formPickerHint">⚠️ Seleccioná al menos un producto</p>
         </div>
         <div class="f-grp"><label data-i18n="formMsg">Mensaje *</label>
-          <textarea id="fMsg" rows="3" data-i18n-ph="formMsgPh" placeholder="Fecha del tour, número de personas, intereses especiales..."></textarea>
+          <textarea id="fMsg" rows="3" autocomplete="off" data-i18n-ph="formMsgPh" placeholder="Fecha del tour, número de personas, intereses especiales..."></textarea>
         </div>
         <button class="btn-pr f-send-btn" id="fSendBtn" onclick="safeSendForm()" data-i18n="formSendBtn">📱 Enviar por WhatsApp</button>
       </div>
