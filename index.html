@@ -264,6 +264,27 @@ footer{background:var(--brown-d);color:rgba(253,245,230,.75);padding:56px 28px 2
 .trl-features{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:36px}
 .trl-feat{background:rgba(245,168,35,.12);border:1px solid rgba(245,168,35,.25);border-radius:50px;padding:7px 16px;font-size:.8rem;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:6px}
 @media(max-width:600px){.trl-grid{grid-template-columns:repeat(2,1fr)}}
+/* ── RESEÑAS ── */
+#resenas{padding:80px 24px;background:var(--cream)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px;margin-bottom:40px}
+.res-card{background:#fff;border:1px solid var(--cream-dd);border-radius:var(--r);padding:26px 22px;box-shadow:0 2px 12px var(--sh);transition:transform var(--tr),box-shadow var(--tr)}
+.res-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px var(--sh2)}
+.res-stars{font-size:1.1rem;letter-spacing:2px;margin-bottom:10px}
+.res-text{font-family:'Lato',sans-serif;font-size:.93rem;color:var(--text);line-height:1.7;margin-bottom:14px;font-style:italic}
+.res-footer{display:flex;align-items:center;gap:10px;border-top:1px solid var(--cream-d);padding-top:12px;margin-top:4px}
+.res-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--caramel-l),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:800;color:#fff;flex-shrink:0;font-family:'Oswald',sans-serif}
+.res-meta{flex:1;min-width:0}
+.res-name{font-weight:800;font-size:.88rem;color:var(--brown-d)}
+.res-tour{font-size:.77rem;color:var(--text-l);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.res-date{font-size:.73rem;color:var(--text-l);white-space:nowrap}
+.res-empty{text-align:center;padding:48px 20px;color:var(--text-l);font-style:italic;grid-column:1/-1}
+.adm-res-card{background:var(--cream);border:1px solid var(--cream-dd);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.adm-res-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+.adm-res-meta{font-size:.82rem;color:var(--text-l)}
+.adm-res-text{font-size:.85rem;color:var(--text);font-style:italic;margin-top:4px;line-height:1.55}
+.res-star-picker{display:flex;gap:6px;font-size:1.5rem;cursor:pointer;margin:8px 0}
+.res-star-picker span{opacity:.3;transition:opacity .15s;user-select:none}
+.res-star-picker span.on{opacity:1}
 .gh-hero{text-align:center;padding:10px 0 22px;border-bottom:2px solid var(--cream-dd);margin-bottom:22px}
 .gh-hero-ico{font-size:42px;margin-bottom:8px}
 .gh-hero h3{font-family:'Oswald',sans-serif;font-size:1.25rem;color:var(--brown-d);margin-bottom:8px}
@@ -712,6 +733,20 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
 
 
 <!-- CONTACT -->
+<section id="resenas">
+  <div class="container">
+    <div class="sec-hd c reveal">
+      <span class="sec-lbl" data-i18n="resLbl">Reseñas</span>
+      <h2 class="sec-h2" data-i18n="resH2">Lo que dicen <br>nuestros viajeros</h2>
+      <p class="sec-sub" data-i18n="resSub">Experiencias reales de personas que exploraron Costa Rica con Jeff.</p>
+    </div>
+    <div class="res-grid reveal" id="resGrid"></div>
+    <div class="menu-cta reveal">
+      <a href="resenas.html" target="_blank" class="btn-lt" data-i18n="resBtn">⭐ Dejar mi reseña</a>
+    </div>
+  </div>
+</section>
+
 <section id="contacto">
   <div class="container">
     <div class="sec-hd reveal">
@@ -763,6 +798,7 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
         <li><a href="#productos" data-i18n="navTours">Tours</a></li>
         <li><a href="#menu" data-i18n="footerPackages">Paquetes Semanales</a></li>
         <li><a href="#traslados" data-i18n="navTransfers">Traslados</a></li>
+        <li><a href="#resenas" data-i18n="navReviews">Reseñas</a></li>
         <li><a href="#galeria" data-i18n="navGallery">Galería</a></li>
         <li><a href="#nosotros">Jeff</a></li>
         <li><a href="#videos" data-i18n="navVideos">Videos</a></li>
@@ -828,6 +864,7 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
       <button class="adm-tab" onclick="switchTab('paquetes',this)">🎒 Paquetes</button>
       <button class="adm-tab" onclick="switchTab('galeria',this)">📸 Galería</button>
       <button class="adm-tab" onclick="switchTab('videos',this)">🎬 Videos</button>
+      <button class="adm-tab" onclick="switchTab('resenas',this)">⭐ Reseñas</button>
       <button class="adm-tab" onclick="switchTab('contacto',this)">📞 Contacto</button>
       <button class="adm-tab" onclick="switchTab('publicar',this)">🚀 Publicar</button>
       <button class="adm-tab" onclick="switchTab('ajustes',this)">⚙️ Ajustes</button>
@@ -993,6 +1030,35 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
         <button class="btn-addp" onclick="addVideo()">+ Agregar Video</button>
       </div>
 
+      <!-- RESEÑAS -->
+      <div class="adm-sec" id="tab-resenas">
+        <div class="adm-note">💡 Las reseñas publicadas aquí se muestran en la sección "Reseñas" de la página. Los clientes envían su reseña vía <strong>resenas.html</strong> → te llega por correo → vos la revisás y la agregás aquí si la aprobás.</div>
+        <div id="a-res-list"></div>
+        <div style="border:1px solid var(--cream-dd);border-radius:var(--r);padding:20px;margin-top:8px;background:var(--cream)">
+          <div class="adm-section-title" style="margin-bottom:14px">➕ Agregar Reseña Aprobada</div>
+          <div class="adm-row">
+            <div class="adm-fld"><label>Nombre del cliente *</label><input id="ar-name" type="text" placeholder="Ej: María González"></div>
+            <div class="adm-fld"><label>País / Origen <small style="font-weight:400;color:var(--text-l)">(opcional)</small></label><input id="ar-country" type="text" placeholder="Ej: 🇺🇸 Estados Unidos"></div>
+          </div>
+          <div class="adm-fld"><label>Tour realizado <small style="font-weight:400;color:var(--text-l)">(opcional)</small></label><input id="ar-tour" type="text" placeholder="Ej: Tour La Fortuna & Aguas Termales"></div>
+          <div class="adm-fld">
+            <label>Calificación *</label>
+            <div class="res-star-picker" id="arStarPicker">
+              <span onclick="setResStar(1)">⭐</span>
+              <span onclick="setResStar(2)">⭐</span>
+              <span onclick="setResStar(3)">⭐</span>
+              <span onclick="setResStar(4)">⭐</span>
+              <span onclick="setResStar(5)">⭐</span>
+            </div>
+          </div>
+          <div class="adm-fld"><label>Reseña *</label><textarea id="ar-text" rows="3" placeholder="Texto de la reseña tal como la envió el cliente..."></textarea></div>
+          <div class="adm-row">
+            <div class="adm-fld"><label>Fecha <small style="font-weight:400;color:var(--text-l)">(mes/año)</small></label><input id="ar-date" type="text" placeholder="Ej: Marzo 2025"></div>
+          </div>
+          <button class="btn-pr" onclick="addReview()" style="margin-top:8px">✅ Publicar Reseña</button>
+        </div>
+      </div>
+
       <!-- CONTACTO -->
       <div class="adm-sec" id="tab-contacto">
         <div class="adm-section-title">📞 Datos de Contacto</div>
@@ -1023,6 +1089,11 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
           </div>
         </div>
         <div id="w3fTestResult" style="font-size:.82rem;margin-top:-8px;margin-bottom:8px"></div>
+        <div class="adm-fld">
+          <label>Clave Web3Forms para Reseñas Públicas <small style="color:var(--text-l);font-weight:400">(se guarda en data.json — permite que clientes envíen reseñas desde resenas.html sin necesitar el admin)</small></label>
+          <input id="a-w3fPublic" type="text" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" autocomplete="off">
+          <p style="font-size:.75rem;color:var(--text-l);margin-top:4px">💡 Podés usar la misma clave de arriba o crear una cuenta Web3Forms separada para el formulario de reseñas.</p>
+        </div>
 
         <div class="adm-section-title">🕐 Horario de Atención</div>
         <div class="adm-note">💡 Activá los días que atendés y ponés el horario de apertura y cierre.</div>
@@ -1188,6 +1259,7 @@ const LANG_DATA = {
     formH3:"Solicitar un Tour", formSub:"¿Cómo preferís que Jeff te contacte?",
     formWa:"📱 WhatsApp", formEmail:"✉️ Correo",
     formName:"Tu nombre *", formPhone:"Teléfono",
+    formEmailLabel:"Tu correo electrónico *", formEmailPh:"tu@correo.com",
     formNamePh:"Tu nombre completo", formPhonePh:"Ej: 8888-8888",
     formTourLabel:"¿Qué tour te interesa?", formTourHint:"(o escribí tu consulta abajo)",
     formPickerHint:"⚠️ Seleccioná al menos un producto",
@@ -1195,6 +1267,10 @@ const LANG_DATA = {
     formSendBtn:"📱 Enviar por WhatsApp",
     footerExplore:"Explora", footerPackages:"Paquetes Semanales", footerRights:"Todos los derechos reservados.",
     waTip:"¡Reservar tour!",
+    navReviews:"Reseñas",
+    resLbl:"Reseñas", resH2:"Lo que dicen <br>nuestros viajeros",
+    resSub:"Experiencias reales de personas que exploraron Costa Rica con Jeff.",
+    resBtn:"⭐ Dejar mi reseña", resEmpty:"Aún no hay reseñas publicadas. ¡Sé el primero en compartir tu experiencia!",
     navTransfers:"Traslados",
     trlLbl:"Traslados", trlH2:"Transporte a todo <br>el país",
     trlSub:"Además de tours, Jeff ofrece servicio de traslado privado a los principales destinos turísticos de Costa Rica. Cómodo, puntual y con conductor bilingüe.",
@@ -1232,6 +1308,7 @@ const LANG_DATA = {
     formH3:"Request a Tour", formSub:"How would you prefer Jeff to contact you?",
     formWa:"📱 WhatsApp", formEmail:"✉️ Email",
     formName:"Your name *", formPhone:"Phone",
+    formEmailLabel:"Your email address *", formEmailPh:"you@email.com",
     formNamePh:"Your full name", formPhonePh:"E.g. 8888-8888",
     formTourLabel:"Which tour interests you?", formTourHint:"(or write your question below)",
     formPickerHint:"⚠️ Please select at least one tour",
@@ -1239,6 +1316,10 @@ const LANG_DATA = {
     formSendBtn:"📱 Send via WhatsApp",
     footerExplore:"Explore", footerPackages:"Weekly Packages", footerRights:"All rights reserved.",
     waTip:"Book a tour!",
+    navReviews:"Reviews",
+    resLbl:"Reviews", resH2:"What our travelers <br>say about us",
+    resSub:"Real experiences from people who explored Costa Rica with Jeff.",
+    resBtn:"⭐ Leave my review", resEmpty:"No reviews yet. Be the first to share your experience!",
     navTransfers:"Transfers",
     trlLbl:"Transfers", trlH2:"Transportation across <br>the country",
     trlSub:"Beyond tours, Jeff offers private transfer service to Costa Rica's top destinations. Comfortable, punctual, and with a bilingual driver.",
@@ -1501,6 +1582,8 @@ const DEFAULT={
     {id:1,url:"https://www.youtube.com/watch?v=LmRzMJm2nfI",title:"Costa Rica en 4K — Naturaleza Pura",desc:""},
     {id:2,url:"https://www.youtube.com/watch?v=_5fGQ-QC7QI",title:"Volcán Arenal — La Fortuna",desc:"Un recorrido por el volcán más icónico de Costa Rica"}
   ],
+  reviews:[],
+  w3fPublic:"",
   adminPw:"88b93a136c5aef18675192431c4805ebc2174ee1d9fb8fcacfff98a91a129b00"
 };
 
@@ -1681,7 +1764,7 @@ function compressImage(dataUrl,maxW=800,quality=0.75){
 //  RENDER
 // ═══════════════════════════════════════════════════
 function renderAll(){
-  renderBusiness();renderProducts();renderPackages();renderGallery();renderVideos();renderContact();renderFooter();
+  renderBusiness();renderProducts();renderPackages();renderGallery();renderVideos();renderContact();renderFooter();renderReviews();
   // Hide navbar links for hidden sections
   document.querySelectorAll('.nav-links a[href="#menu"], .nav-links a[href="#galeria"], .nav-links a[href="#videos"]').forEach(a=>{
     const id=a.getAttribute("href").replace("#","");
@@ -1882,6 +1965,33 @@ function formatSchedule(sched){
   }).join("  ·  ");
 }
 
+// ── RESEÑAS públicas ──────────────────────────────
+function renderReviews(){
+  const grid=document.getElementById("resGrid");
+  if(!grid)return;
+  const reviews=(D.reviews||[]);
+  if(!reviews.length){
+    grid.innerHTML=`<p class="res-empty">${U().resEmpty||"Aún no hay reseñas publicadas."}</p>`;
+    return;
+  }
+  grid.innerHTML=reviews.map(r=>{
+    const stars="⭐".repeat(Math.min(5,Math.max(1,r.rating||5)));
+    const initial=(r.name||"?")[0].toUpperCase();
+    return `<div class="res-card reveal">
+      <div class="res-stars">${stars}</div>
+      <p class="res-text">${esc(r.text||"")}</p>
+      <div class="res-footer">
+        <div class="res-avatar">${initial}</div>
+        <div class="res-meta">
+          <div class="res-name">${esc(r.name||"")}${r.country?` <span style="font-weight:400;font-size:.75rem;color:var(--text-l)">${esc(r.country)}</span>`:""}</div>
+          ${r.tour?`<div class="res-tour">📍 ${esc(r.tour)}</div>`:""}
+        </div>
+        ${r.date?`<div class="res-date">${esc(r.date)}</div>`:""}
+      </div>
+    </div>`;
+  }).join("");
+}
+
 function renderContact(){
   const c=D.contact;
   const wa=c.whatsapp||"50600000000";
@@ -2020,11 +2130,7 @@ function setContactMethod(m){
   document.getElementById("csmWa").classList.toggle("act",m==="wa");
   document.getElementById("csmEmail").classList.toggle("act",m==="email");
   document.getElementById("fSendBtn").textContent=m==="wa"?U().sendWa:U().sendEmail;
-  // Phone only makes sense for email (WA identifies sender automatically)
   document.getElementById("fPhoneGrp").style.display=m==="email"?"block":"none";
-  // Update placeholder hint
-  const msgField=document.getElementById("fMsg");
-  msgField.placeholder=m==="wa"?"Cuéntanos tu pedido, cantidad, fecha de entrega...":"Tu mensaje, pedido o consulta...";
 }
 function togglePickItem(cb){
   const label=cb.closest(".f-pick-item");
@@ -2048,28 +2154,25 @@ function getPickedProducts(){
     return {name:cb.dataset.name,qty};
   });
 }
-async function sendFormMessage(){
+function sendFormMessage(){
   const name=document.getElementById("fName").value.trim();
   const phone=document.getElementById("fPhone")?.value.trim()||"";
   const msg=document.getElementById("fMsg").value.trim();
   const picked=getPickedProducts();
   const hint=document.getElementById("fPickerHint");
 
-  if(!name){showNotif("Por favor ingresa tu nombre");return}
+  if(!name){showNotif("Por favor ingresa tu nombre");return;}
   if(!picked.length&&!msg){
     if(hint)hint.style.display="block";
     showNotif("Seleccioná al menos un tour o escribí un mensaje");
     return;
   }
   if(hint)hint.style.display="none";
-  if(contactMethod==="wa"&&!D.contact.whatsapp){
-    showNotif("⚠️ WhatsApp no está configurado. Usá el método Correo.");
-    setContactMethod("email");
-    return;
-  }
+
   const prodLines=picked.map(p=>p.qty>1?`• ${p.name} (x${p.qty})`:`• ${p.name}`).join("\n");
 
   if(contactMethod==="wa"){
+    if(!D.contact.whatsapp){showNotif("⚠️ WhatsApp no configurado");return;}
     const text=[
       `¡Hola ${_bizName()}! 🌿`,
       `*Nombre:* ${name}`,
@@ -2078,80 +2181,31 @@ async function sendFormMessage(){
     ].filter(Boolean).join("\n");
     window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(text)}`,"_blank");
   }else{
-    await sendEmailW3F({name,phone,prodLines,msg,picked});
-  }
-}
-function scrollToSec(id){document.querySelector(id)?.scrollIntoView({behavior:"smooth"})}
-
-// ═══════════════════════════════════════════════════
-//  WEB3FORMS — email real desde el navegador
-// ═══════════════════════════════════════════════════
-async function sendEmailW3F({name,phone,prodLines,msg,picked}){
-  const key=localStorage.getItem("cl_w3f")||"";
-  const emailAddr=D.contact.email||"";
-
-  if(!key){
-    showNotif("⚠️ El correo no está configurado aún. Contactanos por WhatsApp mientras tanto.");
-    // Offer WA as fallback without disrupting the user
-    if(D.contact.whatsapp){
-      setTimeout(()=>{
-        if(confirm("¿Querés enviarnos el mensaje por WhatsApp en su lugar?")){
-          const text=["¡Hola!",`Nombre: ${name}`,prodLines?`Productos:\n${prodLines}`:"",msg?`Mensaje: ${msg}`:""].filter(Boolean).join("\n");
-          window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(text)}`,"_blank");
-        }
-      },400);
-    }
-    return;
-  }
-
-  // Disable send button to prevent double-submit
-  const btn=document.getElementById("fSendBtn");
-  const origTxt=btn.textContent;
-  btn.disabled=true;
-  btn.textContent="✉️ Enviando...";
-
-  const subject=`Reserva${picked.length?" — "+picked.map(p=>p.name).join(", "):""} — ${name}`;
-  const bodyLines=[
-    `Nombre: ${name}`,
-    phone?`Teléfono: ${phone}`:"",
-    prodLines?`\nProductos:\n${prodLines}`:"",
-    msg?`\nMensaje: ${msg}`:""
-  ].filter(Boolean).join("\n");
-
-  try{
-    const res=await fetch("https://api.web3forms.com/submit",{
-      method:"POST",
-      headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify({
-        access_key:key,
-        subject:subject,
-        from_name:name,
-        replyto:emailAddr,   // replies go back to the store email
-        message:bodyLines,
-        // honeypot — spam prevention
-        botcheck:""
-      })
-    });
-    const data=await res.json();
-    if(data.success){
-      showNotif("✅ ¡Mensaje enviado! Te responderemos pronto.");
-      // Clear form
+    // Mailto — abre el cliente de correo del usuario con todo pre-llenado
+    // Jeff recibe el email y puede responder directamente al cliente
+    if(!D.contact.email){showNotif("⚠️ Correo de Jeff no configurado en el admin");return;}
+    const subject=`Solicitud de Tour — ${name}`;
+    const body=[
+      `Nombre: ${name}`,
+      phone?`Teléfono: ${phone}`:"",
+      prodLines?`\nTours de interés:\n${prodLines}`:"",
+      msg?`\nMensaje: ${msg}`:"",
+      "\n---\nEnviado desde jeffadventurescr.github.io"
+    ].filter(Boolean).join("\n");
+    window.location.href=`mailto:${D.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // Limpiar formulario después de un pequeño delay
+    setTimeout(()=>{
       document.getElementById("fName").value="";
       document.getElementById("fPhone").value="";
       document.getElementById("fMsg").value="";
       document.querySelectorAll("#fProductPicker .f-pick-cb:checked").forEach(cb=>{
         cb.checked=false;togglePickItem(cb);
       });
-    }else{
-      throw new Error(data.message||"Error al enviar");
-    }
-  }catch(e){
-    showNotif("❌ No se pudo enviar: "+e.message);
-  }finally{
-    btn.disabled=false;
-    btn.textContent=origTxt;
+      showNotif("✅ ¡Tu cliente de correo se abrió con el mensaje listo!");
+    },800);
   }
 }
+function scrollToSec(id){document.querySelector(id)?.scrollIntoView({behavior:"smooth"})}
 
 async function testW3Form(){
   const key=document.getElementById("a-w3fKey").value.trim();
@@ -2239,6 +2293,7 @@ function switchTab(name,btn){
   document.querySelectorAll(".adm-tab").forEach(t=>t.classList.remove("act"));
   document.getElementById("tab-"+name).classList.add("act");
   btn.classList.add("act");
+  if(name==="resenas")setResStar(5);
 }
 
 function populateAdmin(){
@@ -2263,11 +2318,14 @@ function populateAdmin(){
   document.getElementById("a-locationUrl").value=c.locationUrl||"";
   // W3F key is device-only, never in D
   document.getElementById("a-w3fKey").value=localStorage.getItem("cl_w3f")||"";
+  // w3fPublic is stored in data.json (safe — it's a public form key)
+  document.getElementById("a-w3fPublic").value=D.w3fPublic||"";
   renderAdminSchedule();
   renderAdminProducts();
   renderAdminPackages();
   renderAdminGallery();
   renderAdminVideos();
+  renderAdminReviews();
   renderAdminStats();
   populateGhConfig();
   document.getElementById("a-pwCurrent").value="";
@@ -2501,6 +2559,8 @@ function saveAdmin(){
   // W3F key — device-only, never goes to data.json
   const w3fKey=document.getElementById("a-w3fKey").value.trim();
   if(w3fKey)localStorage.setItem("cl_w3f",w3fKey);
+  // w3fPublic goes to data.json so public resenas.html can use it
+  D.w3fPublic=document.getElementById("a-w3fPublic").value.trim();
   // Schedule
   c.schedule={};
   Object.keys(DAYS()).forEach(k=>{
@@ -3109,6 +3169,60 @@ function deleteVideo(i){
   D.videos.splice(i,1);
   saveData(D);markLocalSaved();
   renderAdminVideos();renderVideos();
+}
+
+// ── RESEÑAS admin ─────────────────────────────────
+let _resStar=5;
+function setResStar(n){
+  _resStar=n;
+  document.querySelectorAll("#arStarPicker span").forEach((s,i)=>s.classList.toggle("on",i<n));
+}
+function renderAdminReviews(){
+  if(!D.reviews)D.reviews=[];
+  const list=document.getElementById("a-res-list");
+  if(!list)return;
+  if(!D.reviews.length){
+    list.innerHTML=`<p style="color:var(--text-l);font-style:italic;font-size:.85rem;margin-bottom:16px">Aún no hay reseñas publicadas.</p>`;
+    return;
+  }
+  list.innerHTML=D.reviews.map((r,i)=>`
+    <div class="adm-res-card">
+      <div class="adm-res-top">
+        <div>
+          <strong style="font-size:.9rem">${esc(r.name||"")}</strong>
+          <span class="adm-res-meta"> · ${"⭐".repeat(r.rating||5)} · ${esc(r.date||"")}${r.country?" · "+esc(r.country):""}</span>
+          ${r.tour?`<div class="adm-res-meta">📍 ${esc(r.tour)}</div>`:""}
+        </div>
+        <button onclick="deleteReview(${i})" style="background:#dc3545;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:.78rem;cursor:pointer;flex-shrink:0">🗑 Eliminar</button>
+      </div>
+      <div class="adm-res-text">"${esc(r.text||"")}"</div>
+    </div>`).join("");
+}
+function addReview(){
+  const name=document.getElementById("ar-name").value.trim();
+  const text=document.getElementById("ar-text").value.trim();
+  const tour=document.getElementById("ar-tour").value.trim();
+  const country=document.getElementById("ar-country").value.trim();
+  const date=document.getElementById("ar-date").value.trim();
+  if(!name||!text){showNotif("⚠️ Nombre y reseña son obligatorios");return;}
+  if(!D.reviews)D.reviews=[];
+  D.reviews.unshift({id:Date.now(),name,tour,country,rating:_resStar,text,date});
+  saveData(D);markLocalSaved();
+  // Clear form
+  document.getElementById("ar-name").value="";
+  document.getElementById("ar-text").value="";
+  document.getElementById("ar-tour").value="";
+  document.getElementById("ar-country").value="";
+  document.getElementById("ar-date").value="";
+  setResStar(5);
+  renderAdminReviews();renderReviews();
+  showNotif("✅ Reseña publicada. Acordate de publicar en GitHub para que aparezca en la web.");
+}
+function deleteReview(i){
+  if(!confirm("¿Eliminar esta reseña?"))return;
+  D.reviews.splice(i,1);
+  saveData(D);markLocalSaved();
+  renderAdminReviews();renderReviews();
 }
 
 // ═══════════════════════════════════════════════════
