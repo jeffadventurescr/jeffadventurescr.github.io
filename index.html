@@ -1090,9 +1090,14 @@ code{background:rgba(217,69,0,.1);padding:2px 6px;border-radius:4px;font-size:.8
         </div>
         <div id="w3fTestResult" style="font-size:.82rem;margin-top:-8px;margin-bottom:8px"></div>
         <div class="adm-fld">
-          <label>Clave Web3Forms para Reseñas Públicas <small style="color:var(--text-l);font-weight:400">(se guarda en data.json — permite que clientes envíen reseñas desde resenas.html sin necesitar el admin)</small></label>
-          <input id="a-w3fPublic" type="text" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" autocomplete="off">
-          <p style="font-size:.75rem;color:var(--text-l);margin-top:4px">💡 Podés usar la misma clave de arriba o crear una cuenta Web3Forms separada para el formulario de reseñas.</p>
+          <label>Formspree ID — Formulario de Reservas de Tours <small style="color:var(--text-l);font-weight:400">(se guarda en data.json · se obtiene en formspree.io)</small></label>
+          <input id="a-formspreeReservas" type="text" placeholder="Ej: xpwznjpq" autocomplete="off">
+          <p style="font-size:.75rem;color:var(--text-l);margin-top:4px">💡 Creá un formulario llamado "Jeff Adventures — Reservas" en formspree.io y pegá el ID que aparece en la sección Integration.</p>
+        </div>
+        <div class="adm-fld">
+          <label>Formspree ID — Formulario de Reseñas <small style="color:var(--text-l);font-weight:400">(para resenas.html · se guarda en data.json)</small></label>
+          <input id="a-formspreeResenas" type="text" placeholder="Ej: abcd1234" autocomplete="off">
+          <p style="font-size:.75rem;color:var(--text-l);margin-top:4px">💡 Creá un segundo formulario llamado "Jeff Adventures — Reseñas" en formspree.io y pegá su ID aquí.</p>
         </div>
 
         <div class="adm-section-title">🕐 Horario de Atención</div>
@@ -1583,7 +1588,8 @@ const DEFAULT={
     {id:2,url:"https://www.youtube.com/watch?v=_5fGQ-QC7QI",title:"Volcán Arenal — La Fortuna",desc:"Un recorrido por el volcán más icónico de Costa Rica"}
   ],
   reviews:[],
-  w3fPublic:"",
+  formspreeReservas:"",
+  formspreeResenas:"",
   adminPw:"88b93a136c5aef18675192431c4805ebc2174ee1d9fb8fcacfff98a91a129b00"
 };
 
@@ -2154,7 +2160,7 @@ function getPickedProducts(){
     return {name:cb.dataset.name,qty};
   });
 }
-function sendFormMessage(){
+async function sendFormMessage(){
   const name=document.getElementById("fName").value.trim();
   const phone=document.getElementById("fPhone")?.value.trim()||"";
   const msg=document.getElementById("fMsg").value.trim();
@@ -2181,28 +2187,67 @@ function sendFormMessage(){
     ].filter(Boolean).join("\n");
     window.open(`https://wa.me/${D.contact.whatsapp}?text=${encodeURIComponent(text)}`,"_blank");
   }else{
-    // Mailto — abre el cliente de correo del usuario con todo pre-llenado
-    // Jeff recibe el email y puede responder directamente al cliente
-    if(!D.contact.email){showNotif("⚠️ Correo de Jeff no configurado en el admin");return;}
-    const subject=`Solicitud de Tour — ${name}`;
-    const body=[
-      `Nombre: ${name}`,
-      phone?`Teléfono: ${phone}`:"",
-      prodLines?`\nTours de interés:\n${prodLines}`:"",
-      msg?`\nMensaje: ${msg}`:"",
-      "\n---\nEnviado desde jeffadventurescr.github.io"
-    ].filter(Boolean).join("\n");
-    window.location.href=`mailto:${D.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    // Limpiar formulario después de un pequeño delay
-    setTimeout(()=>{
-      document.getElementById("fName").value="";
-      document.getElementById("fPhone").value="";
-      document.getElementById("fMsg").value="";
-      document.querySelectorAll("#fProductPicker .f-pick-cb:checked").forEach(cb=>{
-        cb.checked=false;togglePickItem(cb);
-      });
-      showNotif("✅ ¡Tu cliente de correo se abrió con el mensaje listo!");
-    },800);
+    const fsId=(D.formspreeReservas||"").trim();
+    const btn=document.getElementById("fSendBtn");
+    const origTxt=btn.textContent;
+
+    if(fsId){
+      // ── Formspree: funciona en desktop y móvil sin configuración del cliente ──
+      btn.disabled=true;
+      btn.textContent="✉️ Enviando...";
+      try{
+        const res=await fetch(`https://formspree.io/f/${fsId}`,{
+          method:"POST",
+          headers:{"Content-Type":"application/json","Accept":"application/json"},
+          body:JSON.stringify({
+            _subject:`Solicitud de Tour — ${name}`,
+            _replyto:D.contact.email||"",
+            nombre:name,
+            telefono:phone||"(no indicado)",
+            tours_de_interes:prodLines||"(ninguno seleccionado)",
+            mensaje:msg||"(sin mensaje)"
+          })
+        });
+        const data=await res.json();
+        if(data.ok||res.ok){
+          showNotif("✅ ¡Mensaje enviado! Jeff te responderá pronto.");
+          document.getElementById("fName").value="";
+          document.getElementById("fPhone").value="";
+          document.getElementById("fMsg").value="";
+          document.querySelectorAll("#fProductPicker .f-pick-cb:checked").forEach(cb=>{
+            cb.checked=false;togglePickItem(cb);
+          });
+        }else{
+          throw new Error(data.error||"Error al enviar");
+        }
+      }catch(e){
+        showNotif("❌ No se pudo enviar: "+e.message+". Intentá por WhatsApp.");
+      }finally{
+        btn.disabled=false;
+        btn.textContent=origTxt;
+      }
+    }else{
+      // ── Fallback: mailto si Formspree no está configurado ──
+      if(!D.contact.email){showNotif("⚠️ Configurá Formspree o el correo en el admin panel");return;}
+      const subject=`Solicitud de Tour — ${name}`;
+      const body=[
+        `Nombre: ${name}`,
+        phone?`Teléfono: ${phone}`:"",
+        prodLines?`\nTours de interés:\n${prodLines}`:"",
+        msg?`\nMensaje: ${msg}`:"",
+        "\n---\nEnviado desde jeffadventurescr.github.io"
+      ].filter(Boolean).join("\n");
+      window.location.href=`mailto:${D.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      setTimeout(()=>{
+        document.getElementById("fName").value="";
+        document.getElementById("fPhone").value="";
+        document.getElementById("fMsg").value="";
+        document.querySelectorAll("#fProductPicker .f-pick-cb:checked").forEach(cb=>{
+          cb.checked=false;togglePickItem(cb);
+        });
+        showNotif("✅ ¡Tu cliente de correo se abrió con el mensaje listo!");
+      },800);
+    }
   }
 }
 function scrollToSec(id){document.querySelector(id)?.scrollIntoView({behavior:"smooth"})}
@@ -2318,8 +2363,9 @@ function populateAdmin(){
   document.getElementById("a-locationUrl").value=c.locationUrl||"";
   // W3F key is device-only, never in D
   document.getElementById("a-w3fKey").value=localStorage.getItem("cl_w3f")||"";
-  // w3fPublic is stored in data.json (safe — it's a public form key)
-  document.getElementById("a-w3fPublic").value=D.w3fPublic||"";
+  // Formspree IDs — stored in data.json (public by design, they're form endpoints)
+  document.getElementById("a-formspreeReservas").value=D.formspreeReservas||"";
+  document.getElementById("a-formspreeResenas").value=D.formspreeResenas||"";
   renderAdminSchedule();
   renderAdminProducts();
   renderAdminPackages();
@@ -2559,8 +2605,9 @@ function saveAdmin(){
   // W3F key — device-only, never goes to data.json
   const w3fKey=document.getElementById("a-w3fKey").value.trim();
   if(w3fKey)localStorage.setItem("cl_w3f",w3fKey);
-  // w3fPublic goes to data.json so public resenas.html can use it
-  D.w3fPublic=document.getElementById("a-w3fPublic").value.trim();
+  // Formspree IDs go to data.json (public by design — they're form endpoints)
+  D.formspreeReservas=document.getElementById("a-formspreeReservas").value.trim();
+  D.formspreeResenas=document.getElementById("a-formspreeResenas").value.trim();
   // Schedule
   c.schedule={};
   Object.keys(DAYS()).forEach(k=>{
