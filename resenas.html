@@ -156,6 +156,7 @@ const TXT = {
     starLbl:'Seleccioná tu calificación',
     starTxt:['','Mala 😕','Regular 😐','Buena 🙂','Muy buena 😊','¡Excelente! 🤩'],
     btnLabel:'Enviar reseña por correo',
+    btnSending:'Enviando...',
     hint:'<strong>¿Cómo funciona?</strong> Al hacer clic se abrirá tu aplicación de correo con tu reseña lista. Solo confirmá el envío — Jeff la recibirá y la publicará en el sitio si la aprueba.',
     errName:'Por favor ingresá tu nombre', errRating:'Por favor seleccioná una calificación', errReview:'Por favor escribí tu reseña',
     successTitle:'¡Gracias por tu reseña!',
@@ -174,6 +175,7 @@ const TXT = {
     starLbl:'Select your rating',
     starTxt:['','Poor 😕','Fair 😐','Good 🙂','Very good 😊','Excellent! 🤩'],
     btnLabel:'Send review by email',
+    btnSending:'Sending...',
     hint:"<strong>How it works:</strong> Clicking will open your email app with your review ready. Just confirm the send — Jeff will receive it and publish it on the site if approved.",
     errName:'Please enter your name', errRating:'Please select a rating', errReview:'Please write your review',
     successTitle:'Thanks for your review!',
@@ -224,15 +226,19 @@ function setStar(n){
   document.getElementById('starLabel').textContent = tx().starTxt[n];
 }
 
-// ── Cargar email de Jeff desde data.json ─────────────
+// ── Cargar config desde data.json ──────────────────
 let jeffEmail = 'jeffadventurescr@gmail.com';
+let formspreeId = '';
 fetch('./data.json?nc='+Date.now(),{cache:'no-store'})
   .then(r=>r.ok?r.json():null)
-  .then(d=>{ if(d?.contact?.email) jeffEmail=d.contact.email; })
+  .then(d=>{
+    if(d?.contact?.email) jeffEmail = d.contact.email;
+    if(d?.formspreeResenas) formspreeId = d.formspreeResenas;
+  })
   .catch(()=>{});
 
-// ── Submit con mailto ────────────────────────────────
-function submitReview(){
+// ── Submit: Formspree con fallback a mailto ─────────
+async function submitReview(){
   const name    = document.getElementById('rName').value.trim();
   const country = document.getElementById('rCountry').value.trim();
   const tour    = document.getElementById('rTour').value.trim();
@@ -244,27 +250,58 @@ function submitReview(){
   if(!text){   alert(t.errReview); document.getElementById('rText').focus(); return; }
 
   const stars = '⭐'.repeat(currentStar);
-  const body = [
-    'Nombre: '   + name,
-    country ? 'País: '  + country : '',
-    tour    ? 'Tour: '  + tour    : '',
-    'Calificación: ' + stars + ' (' + currentStar + '/5)',
-    '',
-    'Reseña:',
-    text,
-    '',
-    '---',
-    'Enviado desde resenas.html · Jeff Adventures CR'
-  ].filter(l => l !== undefined).join('\n');
+  const btn = document.querySelector('.btn-send');
+  const origLabel = document.getElementById('btnLabel').textContent;
 
-  const subject = encodeURIComponent(t.emailSubject + (tour ? ' — ' + tour : ''));
-  window.location.href = 'mailto:' + jeffEmail + '?subject=' + subject + '&body=' + encodeURIComponent(body);
-
-  setTimeout(()=>{
-    document.getElementById('formSection').style.display = 'none';
-    document.getElementById('successBox').style.display  = 'block';
-    window.scrollTo({top:0,behavior:'smooth'});
-  }, 900);
+  if(formspreeId){
+    // ── Formspree: funciona en cualquier browser sin configuración ──
+    btn.disabled = true;
+    document.getElementById('btnLabel').textContent = t.btnSending||'Enviando...';
+    try{
+      const res = await fetch('https://formspree.io/f/'+formspreeId,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({
+          _subject: t.emailSubject + (tour?' — '+tour:''),
+          nombre: name,
+          pais: country||'(no indicado)',
+          tour: tour||'(no indicado)',
+          calificacion: stars+' ('+currentStar+'/5)',
+          resena: text
+        })
+      });
+      const data = await res.json();
+      if(data.ok||res.ok){
+        document.getElementById('formSection').style.display = 'none';
+        document.getElementById('successBox').style.display  = 'block';
+        window.scrollTo({top:0,behavior:'smooth'});
+      }else{
+        throw new Error(data.error||'Error al enviar');
+      }
+    }catch(e){
+      alert('No se pudo enviar: '+e.message+'. Intentá nuevamente.');
+    }finally{
+      btn.disabled = false;
+      document.getElementById('btnLabel').textContent = origLabel;
+    }
+  }else{
+    // ── Fallback mailto si Formspree no está configurado ──
+    const bodyLines = [
+      'Nombre: '       + name,
+      country ? 'País: '  + country : '',
+      tour    ? 'Tour: '  + tour    : '',
+      'Calificación: ' + stars + ' ('+currentStar+'/5)',
+      '','Reseña:',text,'',
+      '---','Enviado desde resenas.html · Jeff Adventures CR'
+    ].filter(Boolean).join('\n');
+    const subject = encodeURIComponent(t.emailSubject+(tour?' — '+tour:''));
+    window.location.href='mailto:'+jeffEmail+'?subject='+subject+'&body='+encodeURIComponent(bodyLines);
+    setTimeout(()=>{
+      document.getElementById('formSection').style.display='none';
+      document.getElementById('successBox').style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    },900);
+  }
 }
 
 // ── Init ─────────────────────────────────────────────
