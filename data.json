@@ -321,6 +321,11 @@
       "img": "https://i.imgur.com/fgrnVVC.jpeg"
     },
     {
+      "id": 1775148105291,
+      "emoji": "📸",
+      "img": "https://i.imgur.com/vuo83Hg.jpeg"
+    },
+    {
       "id": 1775148105941,
       "emoji": "📸",
       "img": "https://i.imgur.com/M6vnsTS.png"
@@ -369,5 +374,7 @@
       "title": "Tour de Avistamiento de Ballenas",
       "desc": "Es un espectáculo natural donde el protagonista es la ballena jorobada, que viaja miles de kilómetros para parir y criar en estas aguas cálidas."
     }
-  ]
+  ],
+  "reviews": [],
+  "w3fPublic": ""
 }
