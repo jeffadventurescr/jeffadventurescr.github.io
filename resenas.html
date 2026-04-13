@@ -122,15 +122,15 @@ footer a{color:var(--gold);text-decoration:none}
       </button>
 
       <p class="hint" id="hintTxt">
-        <strong>¿Cómo funciona?</strong> Al hacer clic se abrirá tu aplicación de correo con tu reseña lista. Solo confirmá el envío — Jeff la recibirá y la publicará en el sitio si la aprueba.
+        <strong>¿Cómo funciona?</strong> Completá el formulario y tu reseña se enviará directo a Jeff. Él la revisará y la publicará en el sitio si la aprueba.
       </p>
     </div>
 
     <div class="success-box" id="successBox">
       <div class="success-ico">🎉</div>
       <h2 id="successTitle">¡Gracias por tu reseña!</h2>
-      <p id="successMsg">Tu correo se abrió con la reseña lista. Confirmá el envío y Jeff la recibirá pronto. ¡Pura vida!</p>
-      <a href="index.html" class="btn-back" id="successBack">← Volver al sitio</a>
+      <p id="successMsg">¡Tu reseña fue enviada exitosamente! Jeff la recibirá pronto y la publicará en el sitio si la aprueba. ¡Pura vida!</p>
+      <a href="#" class="btn-back" id="successBack" onclick="goBackToSite();return false;">← Volver al sitio</a>
     </div>
 
   </div>
@@ -157,10 +157,10 @@ const TXT = {
     starTxt:['','Mala 😕','Regular 😐','Buena 🙂','Muy buena 😊','¡Excelente! 🤩'],
     btnLabel:'Enviar reseña por correo',
     btnSending:'Enviando...',
-    hint:'<strong>¿Cómo funciona?</strong> Al hacer clic se abrirá tu aplicación de correo con tu reseña lista. Solo confirmá el envío — Jeff la recibirá y la publicará en el sitio si la aprueba.',
+    hint:'<strong>¿Cómo funciona?</strong> Completá el formulario y tu reseña se enviará directo a Jeff. Él la revisará y la publicará en el sitio si la aprueba.',
     errName:'Por favor ingresá tu nombre', errRating:'Por favor seleccioná una calificación', errReview:'Por favor escribí tu reseña',
     successTitle:'¡Gracias por tu reseña!',
-    successMsg:'Tu correo se abrió con la reseña lista. Confirmá el envío y Jeff la recibirá pronto. ¡Pura vida!',
+    successMsg:'¡Tu reseña fue enviada exitosamente! Jeff la recibirá pronto y la publicará en el sitio si la aprueba. ¡Pura vida!',
     successBack:'← Volver al sitio', backLink:'← Volver al sitio', langBtn:'🇺🇸 English',
     emailSubject:'Nueva Reseña — Jeff Adventures CR'
   },
@@ -176,10 +176,10 @@ const TXT = {
     starTxt:['','Poor 😕','Fair 😐','Good 🙂','Very good 😊','Excellent! 🤩'],
     btnLabel:'Send review by email',
     btnSending:'Sending...',
-    hint:"<strong>How it works:</strong> Clicking will open your email app with your review ready. Just confirm the send — Jeff will receive it and publish it on the site if approved.",
+    hint:"<strong>How it works:</strong> Fill out the form and your review will be sent directly to Jeff. He'll review it and publish it on the site if approved.",
     errName:'Please enter your name', errRating:'Please select a rating', errReview:'Please write your review',
     successTitle:'Thanks for your review!',
-    successMsg:"Your email app opened with the review ready. Confirm the send and Jeff will receive it soon. Pura vida!",
+    successMsg:"Your review was sent successfully! Jeff will receive it soon and publish it on the site if approved. Pura vida!",
     successBack:'← Back to site', backLink:'← Back to site', langBtn:'🇪🇸 Español',
     emailSubject:'New Review — Jeff Adventures CR'
   }
@@ -301,6 +301,16 @@ async function submitReview(){
       document.getElementById('successBox').style.display='block';
       window.scrollTo({top:0,behavior:'smooth'});
     },900);
+  }
+}
+
+// ── Volver al sitio: cierra esta pestaña y regresa a la original ──
+function goBackToSite(){
+  if(window.opener && !window.opener.closed){
+    window.opener.focus();
+    window.close();
+  } else {
+    window.location.href='index.html';
   }
 }
 
