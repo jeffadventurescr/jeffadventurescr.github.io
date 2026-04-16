@@ -375,7 +375,26 @@
       "desc": "Es un espectáculo natural donde el protagonista es la ballena jorobada, que viaja miles de kilómetros para parir y criar en estas aguas cálidas."
     }
   ],
-  "reviews": [],
+  "reviews": [
+    {
+      "id": 1776360234921,
+      "name": "Mario Gutierrez",
+      "tour": "Monteverde",
+      "country": "México",
+      "rating": 5,
+      "text": "Gran experiencia el viaje a Costa Rica, siempre con la total disposición de servicio y atención.\nRecomendado",
+      "date": ""
+    },
+    {
+      "id": 1776360190481,
+      "name": "Yari Guzman",
+      "tour": "La Fortuna, Monte Verde",
+      "country": "",
+      "rating": 5,
+      "text": "Las mejores vacaciones, gracias a Jeff! Desde la planificación, cotizaciones, recomendaciones hasta su trato profesional y cordial a la vez. Jeff, El mejor guía turístico en mi vida, nos facilitó y dio tranquilidad al darnos cuenta en las manos que estábamos! Lo recomiendo 110%. Llegue a el por recomendación de una amiga.",
+      "date": ""
+    }
+  ],
   "formspreeReservas": "meepbyvp",
   "formspreeResenas": "mbdpvnwn"
 }
