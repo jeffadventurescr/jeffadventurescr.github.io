@@ -1489,6 +1489,8 @@ async function setLang(lang) {
       const key = el.getAttribute('data-i18n');
       if (T[key] !== undefined) el.innerHTML = T[key];
     });
+    // Hacer visibles los nuevos elementos .reveal generados por renderAll
+    setTimeout(() => document.querySelectorAll('.reveal:not(.vis)').forEach(el => el.classList.add('vis')), 50);
   } else {
     // Restore original Spanish
     if (D_ORIGINAL) {
@@ -1499,6 +1501,8 @@ async function setLang(lang) {
         const key = el.getAttribute('data-i18n');
         if (T[key] !== undefined) el.innerHTML = T[key];
       });
+      // Hacer visibles los nuevos elementos .reveal generados por renderAll
+      setTimeout(() => document.querySelectorAll('.reveal:not(.vis)').forEach(el => el.classList.add('vis')), 50);
     }
   }
 }
