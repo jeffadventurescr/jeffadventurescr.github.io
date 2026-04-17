@@ -1353,8 +1353,8 @@ let D_view = null;     // current display version (translated or original)
 
 // ── Auto-translation engine (MyMemory API) ────────────────────────────
 function _cacheKey() {
-  // v3 — bumped to force full retranslation with all fields
-  const sig = 'v3_' + (D.business.heroTitle||'') + D.products.length + D.packages.length + (D.products[0]?.name||'');
+  // v4 — incluye cantidad de reseñas para invalidar cache al agregar/eliminar
+  const sig = 'v4_' + (D.business.heroTitle||'') + D.products.length + D.packages.length + (D.products[0]?.name||'') + (D.reviews||[]).length;
   return 'jaEN_' + btoa(unescape(encodeURIComponent(sig))).replace(/[^a-zA-Z0-9]/g,'').slice(0,24);
 }
 
@@ -1419,6 +1419,9 @@ async function buildTranslations() {
   // Videos
   (D.videos||[]).forEach((v,i) => { add(`vid_${i}_title`, v.title); add(`vid_${i}_desc`, v.desc); });
 
+  // Reseñas — texto del cliente y nombre del tour
+  (D.reviews||[]).forEach((r,i) => { add(`rev_${i}_text`, r.text); add(`rev_${i}_tour`, r.tour); });
+
   // Translate sequentially to respect free API rate limits
   let done = 0;
   for (const item of queue) {
@@ -1451,6 +1454,7 @@ function applyTranslationsToD(map) {
   Dt.products.forEach((p,i) => { if(g(`prod_${i}_name`)) p.name=g(`prod_${i}_name`); if(g(`prod_${i}_cat`)) p.cat=g(`prod_${i}_cat`); if(g(`prod_${i}_desc`)) p.desc=g(`prod_${i}_desc`); });
   Dt.packages.forEach((p,i) => { if(g(`pkg_${i}_name`)) p.name=g(`pkg_${i}_name`); if(g(`pkg_${i}_desc`)) p.desc=g(`pkg_${i}_desc`); if(g(`pkg_${i}_price`)) p.price=g(`pkg_${i}_price`); if(g(`pkg_${i}_detail`)) p.detail=g(`pkg_${i}_detail`); });
   (Dt.videos||[]).forEach((v,i) => { if(g(`vid_${i}_title`)) v.title=g(`vid_${i}_title`); if(g(`vid_${i}_desc`)) v.desc=g(`vid_${i}_desc`); });
+  (Dt.reviews||[]).forEach((r,i) => { if(g(`rev_${i}_text`)) r.text=g(`rev_${i}_text`); if(g(`rev_${i}_tour`)) r.tour=g(`rev_${i}_tour`); });
   return Dt;
 }
 
